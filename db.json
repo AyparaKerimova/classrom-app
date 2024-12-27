@@ -1,108 +1,162 @@
 {
-    "users": [
-      {
-        "id": "u1",
-        "fullName": "John Doe",
-        "username": "johndoe",
-        "email": "john.doe@example.com",
-        "password": "password123",
-        "profileImage": "https://via.placeholder.com/150",
-        "role": "teacher",
-        "major": "Programming",
-        "bio": "Passionate about teaching math and programming.",
-        "socialLinks": {
-          "linkedin": "https://linkedin.com/in/johndoe",
-          "twitter": "https://twitter.com/johndoe"
+  "users": [
+    {
+      "id": "u1",
+      "fullName": "John Doe",
+      "username": "johndoe",
+      "email": "john.doe@example.com",
+      "password": "password123",
+      "profileImage": "https://via.placeholder.com/150",
+      "role": "teacher",
+      "major": "Programming",
+      "bio": "Passionate about teaching math and programming.",
+      "socialLinks": {
+        "linkedin": "https://linkedin.com/in/johndoe",
+        "twitter": "https://twitter.com/johndoe"
+      }
+    },
+    {
+      "id": "u2",
+      "fullName": "Jane Smith",
+      "username": "janesmith",
+      "email": "jane.smith@example.com",
+      "password": "securepass",
+      "profileImage": "https://via.placeholder.com/150",
+      "role": "student",
+      "major": "IT",
+      "grades": [
+        {
+          "taskId": "t1",
+          "grade": 85
         }
+      ],
+      "overallGrade": 87
+    },
+    {
+      "id": "7d33",
+      "fullName": "Aypara Kerimova",
+      "userName": "aypara",
+      "email": "ayparakerimova004@gmail.com",
+      "password": "aypara123",
+      "role": "student",
+      "major": "",
+      "bio": "",
+      "socialLinks": {
+        "linkedin": "",
+        "twitter": ""
       },
-      {
-        "id": "u2",
-        "fullName": "Jane Smith",
-        "username": "janesmith",
-        "email": "jane.smith@example.com",
-        "password": "securepass",
-        "profileImage": "https://via.placeholder.com/150",
-        "role": "student",
-        "major": "IT",
-        "grades": [
-          {
-            "taskId": "t1",
-            "grade": 85
-          }
-        ],
-        "overallGrade": 87
-      }
-    ],
-    "classes": [
-      {
-        "id": "c1",
-        "name": "Algebra Basics",
-        "teacherId": "u1",
-        "topics": ["Linear Equations", "Quadratic Equations"],
-        "major": "Programming",
-        "studentIds": ["u2"],
-        "schedule": [
-          { "day": "Monday", "time": "10:00 - 11:30" },
-          { "day": "Wednesday", "time": "10:00 - 11:30" }
-        ]
-      }
-    ],
-    "tasks": [
-      {
-        "id": "t1",
-        "classId": "c1",
-        "title": "Linear Equations Assignment",
-        "description": "Solve 10 linear equations.",
-        "topic": "Linear Equations",
-        "deadline": "2024-01-20T23:59:59Z",
-        "createdAt": "2024-01-10T09:00:00Z",
-        "teacherId": "u1",
-        "assignments": ["a1"],
-        "completionRate": 50
-      }
-    ],
-    "assignments": [
-      {
-        "id": "a1",
-        "taskId": "t1",
-        "studentId": "u2",
-        "url": "https://example.com/assignment1.pdf",
-        "assignDate": "2024-01-15T10:00:00Z",
-        "status": "submitted",
-        "feedback": "Great effort! Improve presentation next time."
-      }
-    ],
-    "invitations": [
-      {
-        "id": "i1",
-        "classId": "c1",
-        "studentId": "u2",
-        "status": "accepted",
-        "expiresAt": "2024-01-15T23:59:59Z"
-      }
-    ],
-    "announcements": [
-      {
-        "id": "a1",
-        "classId": "c1",
-        "title": "Midterm Exam Date",
-        "content": "The midterm exam will be held on January 20th.",
-        "date": "2024-01-10T10:00:00Z"
-      }
-    ],
-    "materials": [
-      {
-        "title": "Linear Equations Notes",
-        "description": "Comprehensive guide to solving linear equations.",
-        "likes": ["u2"],
-        "comments": [
-          {
-            "id": "c1",
-            "userId": "u2",
-            "content": "This was super helpful!"
-          }
-        ]
-      }
-    ]
-  }
-  
+      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735312709/ejl90krespmluay19v7o.webp",
+      "imageId": "ejl90krespmluay19v7o"
+    },
+    {
+      "id": "fe66",
+      "fullName": "test",
+      "userName": "testuser",
+      "email": "sj@shdh",
+      "password": "123sjfg12",
+      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735312853/chfhjbsfzgz9qlsla7hs.webp",
+      "role": "student",
+      "major": "",
+      "bio": "",
+      "imageId": "chfhjbsfzgz9qlsla7hs"
+    },
+    {
+      "id": "32a9",
+      "fullName": "teacher ",
+      "userName": "teacher123",
+      "email": "johndoe@example.com",
+      "password": "teacher123",
+      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735313112/ndggr19h8gr1rnkufl0p.jpg",
+      "role": "teacher",
+      "major": "IT",
+      "bio": "i love IT"
+    }
+  ],
+  "classes": [
+    {
+      "id": "c1",
+      "name": "Algebra Basics",
+      "teacherId": "u1",
+      "topics": [
+        "Linear Equations",
+        "Quadratic Equations"
+      ],
+      "major": "Programming",
+      "studentIds": [
+        "u2"
+      ],
+      "schedule": [
+        {
+          "day": "Monday",
+          "time": "10:00 - 11:30"
+        },
+        {
+          "day": "Wednesday",
+          "time": "10:00 - 11:30"
+        }
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "classId": "c1",
+      "title": "Linear Equations Assignment",
+      "description": "Solve 10 linear equations.",
+      "topic": "Linear Equations",
+      "deadline": "2024-01-20T23:59:59Z",
+      "createdAt": "2024-01-10T09:00:00Z",
+      "teacherId": "u1",
+      "assignments": [
+        "a1"
+      ],
+      "completionRate": 50
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a1",
+      "taskId": "t1",
+      "studentId": "u2",
+      "url": "https://example.com/assignment1.pdf",
+      "assignDate": "2024-01-15T10:00:00Z",
+      "status": "submitted",
+      "feedback": "Great effort! Improve presentation next time."
+    }
+  ],
+  "invitations": [
+    {
+      "id": "i1",
+      "classId": "c1",
+      "studentId": "u2",
+      "status": "accepted",
+      "expiresAt": "2024-01-15T23:59:59Z"
+    }
+  ],
+  "announcements": [
+    {
+      "id": "a1",
+      "classId": "c1",
+      "title": "Midterm Exam Date",
+      "content": "The midterm exam will be held on January 20th.",
+      "date": "2024-01-10T10:00:00Z"
+    }
+  ],
+  "materials": [
+    {
+      "title": "Linear Equations Notes",
+      "description": "Comprehensive guide to solving linear equations.",
+      "likes": [
+        "u2"
+      ],
+      "comments": [
+        {
+          "id": "c1",
+          "userId": "u2",
+          "content": "This was super helpful!"
+        }
+      ],
+      "id": "bf50"
+    }
+  ]
+}

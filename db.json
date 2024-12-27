@@ -92,6 +92,17 @@
       "role": "student",
       "major": "",
       "bio": ""
+    },
+    {
+      "id": "6897",
+      "fullName": "test",
+      "userName": "TestUser",
+      "email": "ayparakerimova00@gmail.com",
+      "password": "aypara1234",
+      "profileImage": {},
+      "role": "student",
+      "major": "",
+      "bio": ""
     }
   ],
   "classes": [

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useFormik } from "formik";
-import axios from "axios";
 import Swal from "sweetalert2";
-import { userSchema } from '../../validations/user.register.validation.js';
+import { userRegisterSchema } from '../../validations/user.register.validation.js';
+import { useRegisterMutation } from '../../features/api.js'; 
 
 const Register = () => {
   const [isTeacher, setIsTeacher] = useState(false);
+  const [registerUser] = useRegisterMutation(); 
 
   const formik = useFormik({
     initialValues: {
@@ -18,33 +19,16 @@ const Register = () => {
       major: "",
       bio: "",
     },
-    validationSchema: userSchema,
+    validationSchema: userRegisterSchema,
     onSubmit: async (values, actions) => {
       try {
         if (!values.profileImage) {
           throw new Error("Profile image is required.");
         }
 
-        const formData = new FormData();
-        formData.append("file", values.profileImage);
-        formData.append("upload_preset", "userprofileimage");
+        const userData = { ...values };
 
-        const imageResponse = await axios.post(
-          "https://api.cloudinary.com/v1_1/dug3akriz/image/upload",
-          formData
-        );
-
-        const imageUrl = imageResponse.data.secure_url;
-
-        const userData = {
-          ...values,
-          profileImage: imageUrl,
-        };
-
-        const response = await axios.post(
-          "http://localhost:3000/users",
-          userData
-        );
+        await registerUser(userData).unwrap();
 
         actions.resetForm();
         Swal.fire({
@@ -56,7 +40,7 @@ const Register = () => {
         Swal.fire({
           title: "Registration failed!",
           icon: "error",
-          text: error.message || "An error occurred.",
+          text: "An error occurred.",
         });
       }
     },
@@ -73,7 +57,7 @@ const Register = () => {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form className="space-y-6" onSubmit={formik.handleSubmit}>
+          <form className="space-y-6" onSubmit={formik.handleSubmit}>
               <div>
                 <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
                   Full Name

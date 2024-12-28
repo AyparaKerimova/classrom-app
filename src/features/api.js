@@ -21,13 +21,13 @@ export const api = createApi({
       }),
       invalidatesTags: ['User'],
     }),
-    // getTasks: builder.query({
-    //   query: () => ({
-    //     url: '/tasks', 
-    //     method: 'GET',
-    //   }),
-    //   providesTags: ['Tasks'],
-    // }),
+    getTasks: builder.query({
+      query: () => ({
+        url: '/tasks', 
+        method: 'GET',
+      }),
+      providesTags: ['Tasks'],
+    }),
   }),
 });
 

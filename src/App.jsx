@@ -7,9 +7,6 @@ import Register from "./pages/common/Register";
 function App() {
   const isAuthenticated = localStorage.getItem("isAuthenticated");
 
-  const data = {
-    content,setContent
-  }
   return (
     <>
       <Routes>

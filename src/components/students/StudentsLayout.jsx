@@ -5,8 +5,8 @@ import StudentsSidebar from './StudentsSidebar'
 const StudentsLayout = () => {
   return (
     <>
-    <StudentsSidebar/>
-        <Outlet/>
+    <StudentsSidebar/>     
+    <Outlet/>
     </>
   )
 }

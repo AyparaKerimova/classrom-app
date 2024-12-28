@@ -1,35 +1,75 @@
-// import { Route, Routes, Navigate } from "react-router-dom";
-// import TeacherRoute from "./routes/TeacherRoute";
-// import StudentRoute from "./routes/StudentRoute";
-// import Login from "./pages/common/Login";
-// import Register from "./pages/common/Register";
-// import { useState } from "react";
-// import { createContext } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import TeacherRoute from "./routes/TeacherRoute";
+import StudentRoute from "./routes/StudentRoute";
+import Login from "./pages/common/Login";
+import Register from "./pages/common/Register";
 
-// export const ContentContext = createContext();
+function App() {
+  const isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated") || "false");
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-// function App() {
-//   const [content,setContent]=useState(null)
-//   const isAuthenticated = localStorage.getItem("isAuthenticated");
+  const ProtectedRoute = ({ children, role }) => {
+    if (!isAuthenticated) return <Navigate to="/login" />;
+    if (role && user.role !== role) {
+      return <Navigate to={`/${user.role === 'teacher' ? '/teachers' : '/students'}`} />;
+    }
+    return children;
+  };
 
-//   const data = {
-//     content,setContent
-//   }
-//   return (
-//     <>
-//     <ContentContext.Provider value={data}>
-//       <Routes>
-//         <Route path="/" element={isAuthenticated ? <Navigate to="/students" /> : <Navigate to="/login" />} />
-        
-//         <Route path="/teachers/*" element={<TeacherRoute />} />
-//         <Route path="/students/*" element={<StudentRoute />} />
-        
-//         <Route path="/login" element={isAuthenticated ? <Navigate to="/students" /> : <Login />} />
-//         <Route path="/register" element={isAuthenticated ? <Navigate to="/students" /> : <Register />} />
-//       </Routes>
-//       </ContentContext.Provider>
-//     </>
-//   );
-// }
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          isAuthenticated ? (
+            user.role === "teacher" ? <Navigate to="/teachers" /> : <Navigate to="/students" />
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
+      <Route
+        path="/teachers/*"
+        element={
+          <ProtectedRoute role="teacher">
+            <TeacherRoute />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/students/*"
+        element={
+          <ProtectedRoute role="student">
+            <StudentRoute />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          !isAuthenticated ? (
+            <Login />
+          ) : user.role === "teacher" ? (
+            <Navigate to="/teachers" />
+          ) : (
+            <Navigate to="/students" />
+          )
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          !isAuthenticated ? (
+            <Register />
+          ) : user.role === "teacher" ? (
+            <Navigate to="/teachers" />
+          ) : (
+            <Navigate to="/students" />
+          )
+        }
+      />
+    </Routes>
+  );
+}
 
 // export default App;

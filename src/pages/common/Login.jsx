@@ -41,11 +41,12 @@ const Login = () => {
           );
           localStorage.setItem('isAuthenticated', 'true');
           navigate(user.role === 'teacher' ? '/teachers' : '/students');
+          window.location.reload();
         } else {
           alert('Email or password is incorrect. Please try again.');
         }
       } catch (error) {
-        alert('An error occurred while fetching users.');
+        alert('error');
         console.error(error);
       }
     },

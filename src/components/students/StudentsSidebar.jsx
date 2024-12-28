@@ -5,9 +5,9 @@ const StudentsSidebar = () => {
   return (
     <>
       <div className="flex h-screen bg-gray-100">
-        <div className="hidden md:flex flex-col w-64 bg-gray-800 ">
-          <div className="flex flex-col flex-1 overflow-y-auto">
-            <nav className="flex flex-col flex-1 overflow-y-auto bg-gradient-to-b from-gray-700 to-blue-300 px-2 py-4 gap-10 ">
+        <div className="hidden md:flex flex-col w-64 bg-gray-800 rounded-2xl">
+          <div className="flex flex-col flex-1 overflow-y-auto ">
+            <nav className="flex flex-col flex-1 overflow-y-auto bg-gradient-to-b from-gray-700 to-blue-300 px-2 py-4 gap-10 rounded-2xl">
               <div>
                 <Link to="/" className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -23,7 +23,7 @@ const StudentsSidebar = () => {
                   </svg>
                   Home
                 </Link>
-                <Link to="profile" className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
+                <Link to="student-profile" className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" style={{ marginRight: '8px' }}>
                     <path fill="currentColor" d="M12 4a5 5 0 1 1-5 5a5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7a7 7 0 0 0-7-7m10 28h-2v-5a5 5 0 0 0-5-5H9a5 5 0 0 0-5 5v5H2v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7zm0-26h10v2H22zm0 5h10v2H22zm0 5h7v2h-7z" />
                   </svg>

@@ -5,21 +5,70 @@ import Login from "./pages/common/Login";
 import Register from "./pages/common/Register";
 
 function App() {
-  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  const isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated") || "false");
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+  const ProtectedRoute = ({ children, role }) => {
+    if (!isAuthenticated) return <Navigate to="/login" />;
+    if (role && user.role !== role) {
+      return <Navigate to={`/${user.role === 'teacher' ? 'teachers' : 'students'}`} />;
+    }
+    return children;
+  };
 
   return (
-    <>
-      <Routes>
-        <Route path="/" element={isAuthenticated ? <Navigate to="/students" /> : <Navigate to="/login" />} />
-        
-        <Route path="/teachers/*" element={<TeacherRoute />} />
-        <Route path="/students/*" element={<StudentRoute />} />
-        
-        <Route path="/login" element={isAuthenticated ? <Navigate to="/students" /> : <Login />} />
-        <Route path="/register" element={isAuthenticated ? <Navigate to="/students" /> : <Register />} />
-      </Routes>
-
-    </>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          isAuthenticated ? (
+            user.role === "teacher" ? <Navigate to="/teachers" /> : <Navigate to="/students" />
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
+      <Route
+        path="/teachers/*"
+        element={
+          <ProtectedRoute role="teacher">
+            <TeacherRoute />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/students/*"
+        element={
+          <ProtectedRoute role="student">
+            <StudentRoute />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          !isAuthenticated ? (
+            <Login />
+          ) : user.role === "teacher" ? (
+            <Navigate to="/teachers" />
+          ) : (
+            <Navigate to="/students" />
+          )
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          !isAuthenticated ? (
+            <Register />
+          ) : user.role === "teacher" ? (
+            <Navigate to="/teachers" />
+          ) : (
+            <Navigate to="/students" />
+          )
+        }
+      />
+    </Routes>
   );
 }
 

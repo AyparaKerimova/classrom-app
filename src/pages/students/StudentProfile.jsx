@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const StudentProfile = () => {
+    const [student, setStudent] = useState();
+  const studentId = JSON.parse(localStorage.getItem("user")).id;
+  console.log(studentId);
+
+  useEffect(()=>{
+    if(studentId){
+        fetch(`http://localhost:3000/users/${studentId}`)
+        .then(res=>res.json())
+        .then(data=>setStudent(data));
+        console.log(studentId)
+    }else{
+        console.log("error")
+    }
+  },[studentId])
   return (
     <>
-    <div class="font-std  w-full rounded-2xl bg-white p-10 font-normal leading-relaxed text-gray-900 shadow-xl">
+    <div className="font-std   w-full rounded-2xl bg-white p-10 font-normal leading-relaxed text-gray-900 shadow-xl ">
+        <div className='border p-8 rounded-2xl shadow-2xl mt-10'>
         <div class="flex flex-col md:flex-row">
             <div class="md:w-1/3 text-center mb-8 md:mb-0">
-                <img src="https://i.pravatar.cc/300" alt="Profile Picture" class="rounded-full w-48 h-48 mx-auto mb-4 border-4 border-indigo-800 transition-transform duration-300 hover:scale-105 ring ring-gray-300"/>
+                <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?semt=ais_hybrid" alt="Profile Picture" class="rounded-full w-48 h-48 mx-auto mb-4 border-4 border-indigo-800 transition-transform duration-300 hover:scale-105 ring ring-gray-300"/>
                 <button class="mt-4 bg-indigo-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-300 ring ring-gray-300 hover:ring-indigo-300">Edit Profile</button>
             </div>
             <div class="md:w-2/3 md:pl-8">
                 <h1 class="text-2xl font-bold text-indigo-800 mb-2">John Doe</h1>
-                <p class="text-gray-600 mb-6">Software Developer</p>
+                <p class="text-gray-600 mb-6"></p>
 
-                <h2 class="text-xl font-semibold text-indigo-800 mb-4">Organization Information</h2>
+                <h2 class="text-xl font-semibold text-indigo-800 mb-4">{student?.fullName}</h2>
                 <p class="text-gray-700 mb-6">
                     Estep Bilişim / Software Developer
                 </p>
@@ -42,7 +57,7 @@ const StudentProfile = () => {
                 </ul>
             </div>
         </div>
-
+        </div>
     </div>
 
     </>

@@ -34,18 +34,33 @@ const Login = () => {
             return;
           }
 
-          alert(`${user.role.charAt(0).toUpperCase() + user.role.slice(1)} logged in`);
-          localStorage.setItem(
-            'user',
-            JSON.stringify({ email, role: user.role })
-          );
+          if (user.role === 'teacher') {
+            const classResponse = await fetch('http://localhost:3000/classes');
+            const classes = await classResponse.json();
+            const userClasses = classes.filter(
+              (classItem) => classItem.teacherId === user.id
+            );
+
+            localStorage.setItem(
+              'user',
+              JSON.stringify({ email, role: user.role, id: user.id, classes: userClasses })
+            );
+          } else {
+            localStorage.setItem(
+              'user',
+              JSON.stringify({ email, role: user.role, id: user.id })
+            );
+          }
+
           localStorage.setItem('isAuthenticated', 'true');
+          alert(`${user.role.charAt(0).toUpperCase() + user.role.slice(1)} logged in`);
           navigate(user.role === 'teacher' ? '/teachers' : '/students');
+          window.location.reload();
         } else {
           alert('Email or password is incorrect. Please try again.');
         }
       } catch (error) {
-        alert('An error occurred while fetching users.');
+        alert('error');
         console.error(error);
       }
     },

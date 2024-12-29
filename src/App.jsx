@@ -11,7 +11,7 @@ function App() {
   const ProtectedRoute = ({ children, role }) => {
     if (!isAuthenticated) return <Navigate to="/login" />;
     if (role && user.role !== role) {
-      return <Navigate to={`/${user.role === 'teacher' ? 'teachers' : 'students'}`} />;
+      return <Navigate to={`/${user.role === 'teacher' ? '/teachers' : '/students'}`} />;
     }
     return children;
   };

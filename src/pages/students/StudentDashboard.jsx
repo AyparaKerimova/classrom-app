@@ -11,7 +11,8 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 export default function StudentDashboard() {
   return (
     <>
-      <Swiper 
+    
+      <Swiper
         spaceBetween={10}
         centeredSlides={true}
         autoplay={{
@@ -25,6 +26,7 @@ export default function StudentDashboard() {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
+        
         <SwiperSlide><img src='https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp'/></SwiperSlide>
         <SwiperSlide><img src='https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg'/></SwiperSlide>
         <SwiperSlide><img src='https://th.bing.com/th/id/OIG1.wQ7nqzXG6LLji1s3MrOP'/></SwiperSlide>

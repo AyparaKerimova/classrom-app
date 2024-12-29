@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useGetTasksQuery } from '../../features/api';
 
 const StudentsTasks = () => {
   const { data: tasks = [], isLoading, isError } = useGetTasksQuery();
+  const [expandedTaskId, setExpandedTaskId] = useState(null);
+
+  const toggleAccordion = (id) => {
+    setExpandedTaskId(expandedTaskId === id ? null : id);
+  };
 
   if (isLoading) {
     return <div className="p-4 bg-gray-100 min-h-screen">Loading tasks...</div>;
@@ -17,46 +22,49 @@ const StudentsTasks = () => {
   }
 
   return (
-    <>
     <div className="p-4 w-full bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">React</h1>
-      <div className="bg-white shadow-md rounded-lg">
-        <div className="divide-y divide-gray-200">
-          {tasks.map((task) => (
+      <div className="bg-white shadow-md rounded-lg divide-y divide-gray-200">
+        {tasks.map((task) => (
+          <div key={task.id}>
             <div
-              key={task.id}
-              className="flex items-center justify-between p-4 hover:bg-gray-50"
+              className="flex items-center justify-between p-4 hover:bg-gray-50 cursor-pointer"
+              onClick={() => toggleAccordion(task.id)}
             >
-              {/* İkon */}
               <div className="flex items-center">
                 <div className="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full text-blue-600 mr-4">
                   <i className="fas fa-clipboard"></i>
                 </div>
-                {/* Başlıq */}
                 <div>
                   <p className="font-medium text-gray-800">{task.title}</p>
-                  <p className="text-sm text-gray-500">{task.topic || 'No topic'}</p>
+                  <p className="text-sm text-gray-500">
+                    {task.topic || 'No topic'}
+                  </p>
                 </div>
               </div>
-              {/* Növ və Tarix */}
-              <div className="text-sm text-gray-500">
-                {task.type || 'Type unknown'}
-              </div>
-              <div className="text-sm text-gray-500">
-                {task.deadline
-                  ? `Deadline: ${new Date(task.deadline).toLocaleString()}`
-                  : 'No deadline'}
-              </div>
-              {/* Üç nöqtəli menyu */}
-              <div className="text-gray-500 hover:text-gray-700 cursor-pointer">
-                <i className="fas fa-ellipsis-v"></i>
+              <div className="flex space-x-8 items-center">
+                <span className="text-sm text-gray-500">
+                  {task.createdAt }
+                </span>
+                <span className="text-sm text-gray-500">
+                  {task.deadline
+                    ? `Deadline: ${new Date(task.deadline).toLocaleString()}`
+                    : 'No deadline'}
+                </span>
+                <i className="fas fa-chevron-down text-gray-500"></i>
               </div>
             </div>
-          ))}
-        </div>
+            {expandedTaskId === task.id && (
+              <div className="p-4 bg-gray-50">
+                <button className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                  Details about task
+                </button>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
-    </>
   );
 };
 

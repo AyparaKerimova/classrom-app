@@ -146,18 +146,18 @@
       "completionRate": 50
     },
     {
-      "id": "t1",
-      "classId": "c1",
-      "title": "Linear Equations Assignment",
-      "description": "Solve 10 linear equations.",
-      "topic": "Linear Equations",
+      "id": "t2",
+      "classId": "c2",
+      "title": "test",
+      "description": "Lorem impus",
+      "topic": "test",
       "deadline": "2024-01-20T23:59:59Z",
       "createdAt": "2024-01-10T09:00:00Z",
       "teacherId": "u1",
       "assignments": [
-        "a1"
+        "a2"
       ],
-      "completionRate": 50
+      "completionRate": 60
     }
   ],
   "assignments": [

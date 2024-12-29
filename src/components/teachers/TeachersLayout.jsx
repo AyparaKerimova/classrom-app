@@ -1,11 +1,10 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import TeachersSidebar from './TeachersSidebar'
 
 const TeachersLayout = () => {
   return (
     <>
-        
-        <Outlet/>
+        <TeachersSidebar/>
     </>
   )
 }

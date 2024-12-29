@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import TeacherProfileCard from '../../components/teachers/TeacherProfileCard';
 
 const TeacherProfile = () => {
-  const [teacher, setTeacher] = useState(null);
+  const [teacher, setTeacher] = useState({});
   const teacherId = JSON.parse(localStorage.getItem("user")).id;
   console.log(teacherId);
   
@@ -21,10 +22,7 @@ const TeacherProfile = () => {
 
   return (
     <div className="teacher-profile">
-      <h1>{teacher.fullName}'s Profile</h1>
-      <img src={teacher.profileImage} alt={teacher.fullName} />
-      <p>{teacher.bio}</p>
-      <p>Email: {teacher.email}</p>
+      <TeacherProfileCard fullName={teacher.fullName} img={teacher.profileImage} email={teacher.email} major={teacher.major} bio={teacher.bio} socialLinks={teacher.socialLinks?.linkedIn} socialLinks2={teacher.socialLinks?.socialLinks2}/>
     </div>
   );
 };

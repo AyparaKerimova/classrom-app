@@ -6,7 +6,7 @@
       "username": "johndoe",
       "email": "john.doe@example.com",
       "password": "password123",
-      "profileImage": "https://via.placeholder.com/150",
+      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
       "role": "teacher",
       "major": "Programming",
       "bio": "Passionate about teaching math and programming.",
@@ -21,7 +21,7 @@
       "username": "janesmith",
       "email": "jane.smith@example.com",
       "password": "securepass",
-      "profileImage": "https://via.placeholder.com/150",
+      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
       "role": "student",
       "major": "IT",
       "grades": [
@@ -45,7 +45,7 @@
         "linkedin": "",
         "twitter": ""
       },
-      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735312709/ejl90krespmluay19v7o.webp",
+      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
       "imageId": "ejl90krespmluay19v7o"
     },
     {
@@ -66,7 +66,7 @@
       "userName": "teacher123",
       "email": "johndoe@example.com",
       "password": "teacher123",
-      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735313112/ndggr19h8gr1rnkufl0p.jpg",
+      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
       "role": "teacher",
       "major": "IT",
       "bio": "i love IT"
@@ -77,7 +77,7 @@
       "userName": "janesmith",
       "email": "johndoe@example.com",
       "password": "abc123456",
-      "profileImage": {},
+      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
       "role": "student",
       "major": "",
       "bio": ""
@@ -88,7 +88,7 @@
       "userName": "finaluser",
       "email": "sj@shdh.edu",
       "password": "12345sjsj",
-      "profileImage": {},
+      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
       "role": "student",
       "major": "",
       "bio": ""
@@ -99,7 +99,7 @@
       "userName": "TestUser",
       "email": "ayparakerimova00@gmail.com",
       "password": "aypara1234",
-      "profileImage": {},
+      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
       "role": "student",
       "major": "",
       "bio": ""

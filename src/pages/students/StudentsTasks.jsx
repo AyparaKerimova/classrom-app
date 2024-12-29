@@ -17,7 +17,8 @@ const StudentsTasks = () => {
   }
 
   return (
-    <div className="p-4 bg-gray-100 min-h-screen">
+    <>
+    <div className="p-4 w-full bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">React</h1>
       <div className="bg-white shadow-md rounded-lg">
         <div className="divide-y divide-gray-200">
@@ -55,6 +56,7 @@ const StudentsTasks = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

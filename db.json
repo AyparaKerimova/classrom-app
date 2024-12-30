@@ -147,36 +147,22 @@
   ],
   "tasks": [
     {
-      "id": "t1",
-      "classId": "c1",
-      "title": "Linear Equations Assignment",
-      "description": "Solve 10 linear equations.",
-      "topic": "Linear Equations",
-      "deadline": "2024-01-20T23:59:59Z",
-      "createdAt": "2024-01-10T09:00:00Z",
-      "teacherId": "u1",
-      "assignmentIds": [
-        "a1"
-      ],
-      "completionRate": 50
-    },
-    {
-      "id": "66d9",
-      "title": "movielist",
-      "description": "clean code/yup formik",
-      "topic": "react/movies",
-      "deadline": "2025-01-30T12:38",
+      "id": "3aa6",
+      "title": "Learn clear code/rtk query task",
+      "description": "please watch all videos and do your all tasks",
+      "topic": "react",
+      "deadline": "2024-12-31T12:07",
       "classId": "c1",
       "teacherId": "u1",
       "assignmentIds": [],
       "completionRate": 0,
-      "createdAt": "2024-12-29T08:38:54.100Z"
+      "createdAt": "2024-12-30T08:07:53.155Z"
     }
   ],
   "assignments": [
     {
       "id": "a1",
-      "taskId": "t1",
+      "taskId": null,
       "studentId": "u2",
       "url": "https://example.com/assignment1.pdf",
       "assignDate": "2024-01-15T10:00:00Z",

@@ -11,13 +11,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
-    "@tiptap/extension-bold": "^2.10.4",
-    "@tiptap/extension-italic": "^2.10.4",
-    "@tiptap/pm": "^2.10.4",
-    "@tiptap/react": "^2.10.4",
-    "@tiptap/starter-kit": "^2.10.4",
+    "@tinymce/tinymce-react": "^5.1.1",
     "axios": "^1.7.9",
     "cloudinary-react": "^1.8.1",
+    "dompurify": "^3.2.3",
     "formik": "^2.4.6",
     "i18next": "^24.2.0",
     "i18next-browser-languagedetector": "^8.0.2",
@@ -29,6 +26,7 @@
     "react-router-dom": "^7.1.1",
     "sweetalert2": "^11.15.3",
     "swiper": "^11.1.15",
+    "tinymce": "^7.6.0",
     "yup": "^1.6.1"
   },
   "devDependencies": {

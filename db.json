@@ -6,14 +6,15 @@
       "username": "johndoe",
       "email": "john.doe@example.com",
       "password": "password123",
-      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
+      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735458979/uwnhjvdrfbew4rxrcaaw.jpg",
       "role": "teacher",
-      "major": "Programming",
-      "bio": "Passionate about teaching math and programming.",
+      "major": "IT",
+      "bio": "math teacher and love animals,students and nature",
       "socialLinks": {
         "linkedin": "https://linkedin.com/in/johndoe",
         "twitter": "https://twitter.com/johndoe"
-      }
+      },
+      "confirmPassword": ""
     },
     {
       "id": "u2",
@@ -66,10 +67,12 @@
       "userName": "teacher123",
       "email": "johndoe@example.com",
       "password": "teacher123",
-      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
+      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735456488/pr0f2e66s3iobokhm2y9.webp",
       "role": "teacher",
       "major": "IT",
-      "bio": "i love IT"
+      "bio": " i love IT ",
+      "username": "adead",
+      "confirmPassword": ""
     },
     {
       "id": "39b6",
@@ -103,6 +106,17 @@
       "role": "student",
       "major": "",
       "bio": ""
+    },
+    {
+      "id": "789d",
+      "fullName": "test",
+      "userName": "aypara",
+      "email": "admin@example.com",
+      "password": "abc12345",
+      "profileImage": {},
+      "role": "student",
+      "major": "",
+      "bio": ""
     }
   ],
   "classes": [
@@ -116,7 +130,8 @@
       ],
       "major": "Programming",
       "studentIds": [
-        "u2","41c3"
+        "u2",
+        "41c3"
       ],
       "schedule": [
         {
@@ -140,10 +155,22 @@
       "deadline": "2024-01-20T23:59:59Z",
       "createdAt": "2024-01-10T09:00:00Z",
       "teacherId": "u1",
-      "assignments": [
+      "assignmentIds": [
         "a1"
       ],
       "completionRate": 50
+    },
+    {
+      "id": "66d9",
+      "title": "movielist",
+      "description": "clean code/yup formik",
+      "topic": "react/movies",
+      "deadline": "2025-01-30T12:38",
+      "classId": "c1",
+      "teacherId": "u1",
+      "assignmentIds": [],
+      "completionRate": 0,
+      "createdAt": "2024-12-29T08:38:54.100Z"
     }
   ],
   "assignments": [

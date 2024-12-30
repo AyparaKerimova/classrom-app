@@ -3,7 +3,7 @@ import { BASE_API_URL } from '../constants/api.js';
 
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }), 
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_API_URL }), 
   tagTypes: ['User', 'Tasks'], 
   endpoints: (builder) => ({
     login: builder.query({

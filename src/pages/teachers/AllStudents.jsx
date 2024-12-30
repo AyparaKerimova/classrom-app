@@ -49,12 +49,10 @@ const AllStudents = () => {
     }
   }, []);
 
-  if (!students.length) return <div>No students found.</div>;
-
   return (
     <div className="all-students">
       <h1 className="text-center text-3xl font-thin">
-        Students in className {classId}
+        Students in {classId} class
       </h1>
       <div className="h-full flex w-full justify-center items-center dark:bg-gray-800 p-2">
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-2 xl:p-5">

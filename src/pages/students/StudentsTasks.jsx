@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router'; 
 import { useGetTasksQuery } from '../../features/api';
 
 const StudentsTasks = () => {
@@ -62,9 +63,12 @@ const StudentsTasks = () => {
               }`}
             >
               <div className="p-4 bg-gray-50">
-                <button className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                <Link
+                  to={`${task.id}`}
+                  className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                >
                   Details about task
-                </button>
+                </Link>
               </div>
             </div>
           </div>

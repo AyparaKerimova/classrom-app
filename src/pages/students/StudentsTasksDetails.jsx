@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGetTaskQuery } from "../../features/api";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const StudentTaskDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { data: task, isLoading, isError } = useGetTaskQuery(id);
+
+    const [comment, setComment] = useState("");
+
+    const handleAddComment = () => {
+        if (comment.trim() === "") {
+            alert("Comment cannot be empty!");
+            return;
+        }
+        console.log("Comment added:", comment);
+        setComment(""); 
+    };
 
     if (isLoading) {
         return <div className="p-4 text-gray-500">Loading...</div>;
@@ -46,7 +59,6 @@ const StudentTaskDetails = () => {
                     </div>
                 </div>
 
-
                 <div className="flex-grow bg-white p-6 shadow rounded-b-lg">
                     <h2 className="text-2xl font-bold mb-4 text-gray-800">{task.title}</h2>
                     <p className="text-gray-700 mb-2">
@@ -81,11 +93,16 @@ const StudentTaskDetails = () => {
 
                     <div className="mt-6">
                         <h3 className="text-gray-800 font-semibold">Comment</h3>
-                        <textarea
-                            className="w-full border border-gray-300 rounded-lg p-2 mt-2"
+                        <ReactQuill
+                            value={comment}
+                            onChange={setComment}
                             placeholder="Add a comment..."
+                            className="mt-2"
                         />
-                        <button className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        <button
+                            className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                            onClick={handleAddComment}
+                        >
                             Add
                         </button>
                     </div>

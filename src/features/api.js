@@ -3,8 +3,8 @@ import { BASE_API_URL } from '../constants/api.js';
 
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }), 
-  tagTypes: ['User', 'Tasks'], 
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_API_URL }),
+  tagTypes: ['User', 'Tasks', 'Assignments'],
   endpoints: (builder) => ({
     login: builder.query({
       query: () => ({
@@ -23,12 +23,41 @@ export const api = createApi({
     }),
     getTasks: builder.query({
       query: () => ({
-        url: '/tasks', 
+        url: '/tasks',
         method: 'GET',
       }),
       providesTags: ['Tasks'],
     }),
+    getTask: builder.query({
+      query: (id) => ({
+        url: `/tasks/${id}`,
+        method: 'GET',
+      }),
+      providesTags: ['Tasks'],
+    }),
+    getUserById: builder.query({
+      query: (id) => ({
+        url: `/users/${id}`,
+        method: 'GET',
+      }),
+      providesTags: ['User'],
+    }),
+    addAssignment: builder.mutation({
+      query: (assignmentData) => ({
+        url: '/assignments',
+        method: 'POST',
+        body: assignmentData,
+      }),
+      invalidatesTags: ['Assignments'],
+    }),
   }),
 });
 
-export const { useLoginQuery, useRegisterMutation, useGetTasksQuery } = api;
+export const {
+  useLoginQuery,
+  useRegisterMutation,
+  useGetTasksQuery,
+  useGetTaskQuery,
+  useGetUserByIdQuery,
+  useAddAssignmentMutation,
+} = api;

@@ -50,6 +50,22 @@ export const api = createApi({
       }),
       invalidatesTags: ['Assignments'],
     }),
+    updateAssignment: builder.mutation({
+      query: ({ id, ...update }) => ({
+        url: `/assignments/${id}`,
+        method: "PATCH",
+        body: update,
+      }),
+      invalidatesTags: ["Assignments"],
+    }),
+    // Yeni endpoint
+    getAssignmentsByTaskId: builder.query({
+      query: (taskId) => ({
+        url: `/assignments?taskId=${taskId}`,
+        method: 'GET',
+      }),
+      providesTags: ['Assignments'],
+    }),
   }),
 });
 
@@ -60,4 +76,6 @@ export const {
   useGetTaskQuery,
   useGetUserByIdQuery,
   useAddAssignmentMutation,
+  useUpdateAssignmentMutation,
+  useGetAssignmentsByTaskIdQuery,  
 } = api;

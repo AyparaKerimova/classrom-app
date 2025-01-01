@@ -168,25 +168,16 @@
       "studentId": "u2",
       "url": "https://example.com/assignment1.pdf",
       "assignDate": "2024-01-15T10:00:00Z",
-      "status": "submitted",
-      "feedback": "Great effort! Improve presentation next time."
-    },
-    {
-      "id": "1fd6",
-      "taskId": "t2",
-      "studentId": "7d33",
-      "url": "test",
-      "assignDate": "2025-01-01T18:03:55.573Z",
-      "status": "submitted",
-      "feedback": "Great effort! Improve presentation next time."
-    },
-    {
-      "id": "0c7d",
-      "taskId": "t1",
-      "studentId": "u2",
-      "url": "salamm",
-      "assignDate": "1/1/2025, 10:12:07 PM",
       "status": "unsubmitted",
+      "feedback": "Great effort! Improve presentation next time."
+    },
+    {
+      "id": "b168",
+      "taskId": "t1",
+      "studentId": "39b6",
+      "url": "http://localhost:5173/students/students-tasks/t1",
+      "assignDate": "2025-01-01T20:16:23.524Z",
+      "status": "submit",
       "feedback": "Great effort! Improve presentation next time."
     }
   ],

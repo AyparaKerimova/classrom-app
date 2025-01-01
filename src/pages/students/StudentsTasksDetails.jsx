@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useGetTaskQuery, useGetUserByIdQuery, useAddAssignmentMutation } from "../../features/api";
+import {
+  useGetTaskQuery,
+  useGetUserByIdQuery,
+  useGetAssignmentsByTaskIdQuery,
+  useAddAssignmentMutation,
+  useUpdateAssignmentMutation,
+} from "../../features/api";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -8,22 +14,24 @@ const StudentTaskDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: task, isLoading, isError } = useGetTaskQuery(id);
-  const { data: teacher, isLoading: teacherLoading, isError: teacherError } =
-    useGetUserByIdQuery(task?.teacherId, {
-      skip: !task?.teacherId,
-    });
+  const { data: teacher, isLoading: teacherLoading } = useGetUserByIdQuery(task?.teacherId, {
+    skip: !task?.teacherId,
+  });
+  const { data: assignments, isLoading: assignmentsLoading } = useGetAssignmentsByTaskIdQuery(task?.id, {
+    skip: !task?.id,
+  });
 
   const [comment, setComment] = useState("");
   const [assignmentsLink, setAssignmentsLink] = useState("");
   const [showAssignmentsForm, setShowAssignmentsForm] = useState(false);
   const [addAssignment, { isLoading: addAssignmentLoading }] = useAddAssignmentMutation();
-
+  const [updateAssignment, { isLoading: updateAssignmentLoading }] = useUpdateAssignmentMutation();
   const [studentId, setStudentId] = useState(null);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user")); 
+    const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
-      setStudentId(user.id); 
+      setStudentId(user.id);
     }
   }, []);
 
@@ -37,26 +45,48 @@ const StudentTaskDetails = () => {
   };
 
   const handleSaveAssignments = async () => {
-    if (!studentId) {
-      console.log("Student ID is missing");
+    if (!studentId || !task?.id) {
+      console.error("Student ID or Task ID is missing");
       return;
     }
 
     try {
       const assignmentData = {
         taskId: task.id,
-        studentId: studentId, 
+        studentId: studentId,
         url: assignmentsLink,
-        assignDate: new Date().toLocaleString(),
+        assignDate: new Date().toISOString(),
         status: "unsubmitted",
         feedback: "Great effort! Improve presentation next time.",
       };
+
       await addAssignment(assignmentData).unwrap();
+      console.log("Assignment added successfully");
       setShowAssignmentsForm(false);
       setAssignmentsLink("");
-      console.log("Assignments Link:", assignmentsLink);
     } catch (error) {
       console.error("Error adding assignment:", error);
+    }
+  };
+
+  const handleUpdateStatus = async () => {
+    if (!task?.id || !studentId) {
+      console.error("Task ID or Student ID is missing");
+      return;
+    }
+
+    const assignment = assignments?.find((a) => a.taskId === task.id && a.studentId === studentId);
+
+    if (!assignment) {
+      console.error("Assignment not found for the given task and student");
+      return;
+    }
+
+    try {
+      await updateAssignment({ id: assignment.id, status: "submit" }).unwrap();
+      console.log("Assignment status updated successfully");
+    } catch (error) {
+      console.error("Error updating status:", error);
     }
   };
 
@@ -65,11 +95,11 @@ const StudentTaskDetails = () => {
     setAssignmentsLink("");
   };
 
-  if (isLoading || teacherLoading) {
+  if (isLoading || teacherLoading || assignmentsLoading || addAssignmentLoading || updateAssignmentLoading) {
     return <div className="p-4 text-gray-500">Loading...</div>;
   }
 
-  if (isError || teacherError) {
+  if (isError) {
     return <div className="p-4 text-red-500">Error loading task details</div>;
   }
 
@@ -104,8 +134,7 @@ const StudentTaskDetails = () => {
       <div className="bg-white shadow rounded-lg p-6 mb-6">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">{task.title}</h2>
         <p className="text-gray-700 mb-2">
-          <span className="font-medium">Description:</span>{" "}
-          {task.description || "No description available"}
+          <span className="font-medium">Description:</span> {task.description || "No description available"}
         </p>
         <p className="text-gray-700 mb-2">
           <span className="font-medium">Topic:</span> {task.topic || "No topic"}
@@ -118,9 +147,14 @@ const StudentTaskDetails = () => {
           {task.deadline ? new Date(task.deadline).toLocaleString() : "No deadline"}
         </p>
         <p className="text-gray-700">
-          <span className="font-medium">Assigned Teacher:</span>{" "}
-          {teacher ? teacher.fullName : "No teacher assigned"}
+          <span className="font-medium">Assigned Teacher:</span> {teacher ? teacher.fullName : "No teacher assigned"}
         </p>
+        <button
+          onClick={handleUpdateStatus}
+          className="bg-green-400 text-white px-4 py-2 rounded hover:bg-green-500 mt-4"
+        >
+          Submit
+        </button>
       </div>
 
       <div className="bg-white shadow rounded-lg p-6 mb-6">

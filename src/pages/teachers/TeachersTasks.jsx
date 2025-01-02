@@ -65,7 +65,7 @@ const TeachersTasks = () => {
 
   return (
     <div className="all-tasks">
-      <h1 className="text-center text-3xl font-thin">
+      <h1 className="text-center text-3xl font-light">
         Tasks for {classId} class
       </h1>
       <div className="relative inline-flex group">

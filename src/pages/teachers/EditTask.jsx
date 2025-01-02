@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { Editor } from "@tinymce/tinymce-react";
+import { editTaskSchema } from "../../validations/task.edit.validation.js";
 
 const EditTask = () => {
   const { id } = useParams();
@@ -31,14 +31,7 @@ const EditTask = () => {
       deadline: task?.deadline || "",
     },
     enableReinitialize: true,
-    validationSchema: Yup.object({
-      title: Yup.string().required("Task title is required"),
-      description: Yup.string().required("Task description is required"),
-      topic: Yup.string().required("Topic is required"),
-      deadline: Yup.date()
-        .min(new Date(), "Deadline cannot be in the past")
-        .required("Deadline is required"),
-    }),
+    validationSchema: editTaskSchema,
     onSubmit: async (values) => {
       try {
         const response = await fetch(`http://localhost:3000/tasks/${id}`, {

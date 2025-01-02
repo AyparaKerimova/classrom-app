@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { Editor } from "@tinymce/tinymce-react";
+import { addTaskSchema } from "../../validations/task.add.validation.js";
 
 const AddTask = () => {
   const { teacherId, classId } = useParams();
@@ -17,14 +17,7 @@ const AddTask = () => {
       topic: "",
       deadline: "",
     },
-    validationSchema: Yup.object({
-      title: Yup.string().required("Task title is required"),
-      description: Yup.string().required("Task description is required"),
-      topic: Yup.string().required("Topic is required"),
-      deadline: Yup.date()
-        .min(new Date(), "Deadline cannot be in the past")
-        .required("Deadline is required"),
-    }),
+    validationSchema: addTaskSchema,
     onSubmit: async (values) => {
       const newTask = {
         title: values.title,

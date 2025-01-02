@@ -4,6 +4,24 @@ import Swal from "sweetalert2";
 import { userRegisterSchema } from '../../validations/user.register.validation.js';
 import { useRegisterMutation } from '../../features/api.js'; 
 
+const uploadImageToCloudinary = async (imageFile) => {
+  const formData = new FormData();
+  formData.append("file", imageFile);
+  formData.append("upload_preset", "userprofileimage"); 
+
+  const response = await fetch("https://api.cloudinary.com/v1_1/dug3akriz/image/upload", {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to upload image to Cloudinary");
+  }
+
+  const data = await response.json();
+  return data.secure_url; 
+};
+
 const Register = () => {
   const [isTeacher, setIsTeacher] = useState(false);
   const [registerUser] = useRegisterMutation(); 
@@ -26,7 +44,8 @@ const Register = () => {
           throw new Error("Profile image is required.");
         }
 
-        const userData = { ...values };
+        const profileImageUrl = await uploadImageToCloudinary(values.profileImage);
+        const userData = { ...values, profileImage: profileImageUrl };
 
         await registerUser(userData).unwrap();
 

@@ -1,11 +1,17 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 const TeachersSidebar = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const teacherId = user.id;
   const classId = user.classes && user.classes.length > 0 ? user.classes[0].id : null;
+  const navigate = useNavigate();
 
+  function handleLogOut() {
+    localStorage.setItem("isAuthenticated","false");
+    navigate("/login");
+    window.location.reload()
+  }
   return (
     <div className="flex h-screen bg-gray-100">
       <div className="hidden md:flex flex-col w-64 bg-gray-800">
@@ -41,6 +47,8 @@ const TeachersSidebar = () => {
             </div>
           </nav>
         </div>
+        <button onClick={handleLogOut} className='text-gray-200'>Logout</button>
+
       </div>
       <Outlet />
     </div>

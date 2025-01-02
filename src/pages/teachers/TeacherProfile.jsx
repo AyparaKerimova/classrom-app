@@ -22,7 +22,7 @@ const TeacherProfile = () => {
 
   return (
     <div className="teacher-profile">
-      <TeacherProfileCard fullName={teacher.fullName} img={teacher.profileImage} email={teacher.email} major={teacher.major} bio={teacher.bio} socialLinks={teacher.socialLinks?.linkedIn} socialLinks2={teacher.socialLinks?.socialLinks2}/>
+      <TeacherProfileCard fullName={teacher.fullName} img={teacher.profileImage} email={teacher.email} major={teacher.major} bio={teacher.bio} socialLinks={teacher.socialLinks?.linkedin} socialLinks2={teacher.socialLinks?.twitter}/>
     </div>
   );
 };

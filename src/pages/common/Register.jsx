@@ -43,12 +43,26 @@ const Register = () => {
         if (!values.profileImage) {
           throw new Error("Profile image is required.");
         }
-
+  
+        const grades = [
+          {
+            taskId: "", 
+            grade: 0, 
+          },
+        ];
+        const overallGrade = 0; 
+  
         const profileImageUrl = await uploadImageToCloudinary(values.profileImage);
-        const userData = { ...values, profileImage: profileImageUrl };
-
+  
+        const userData = {
+          ...values,
+          profileImage: profileImageUrl,
+          grades,
+          overallGrade,
+        };
+  
         await registerUser(userData).unwrap();
-
+  
         actions.resetForm();
         Swal.fire({
           title: "Successfully registered!",

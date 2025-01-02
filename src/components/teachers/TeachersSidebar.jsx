@@ -1,17 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 const TeachersSidebar = () => {
+  const [tasks, setTasks] = useState([]);
+  const [students, setStudents] = useState([]);
   const user = JSON.parse(localStorage.getItem('user'));
   const teacherId = user.id;
   const classId = user.classes && user.classes.length > 0 ? user.classes[0].id : null;
   const navigate = useNavigate();
 
+  useEffect(() => {
+    fetch("http://localhost:3000/tasks")
+      .then(response => response.json())
+      .then(data => {
+        const teacherTasks = data.filter(task => task.teacherId === teacherId);
+        setTasks(teacherTasks);
+      });
+
+    fetch("http://localhost:3000/users")
+      .then(response => response.json())
+      .then(data => {
+        const filteredStudents = data.filter(user => user.role === "student");
+        setStudents(filteredStudents);
+      });
+  }, [teacherId]);
+
   function handleLogOut() {
-    localStorage.setItem("isAuthenticated","false");
+    localStorage.setItem("isAuthenticated", "false");
     navigate("/login");
-    window.location.reload()
+    window.location.reload();
   }
+
   return (
     <div className="flex h-screen bg-gray-100">
       <div className="hidden md:flex flex-col w-64 bg-gray-800">
@@ -44,11 +63,32 @@ const TeachersSidebar = () => {
               >
                 Students
               </Link>
+              {tasks.length > 0 && students.length > 0 && (
+                <Link
+                  to={`assignments/${tasks[0].id}/${students[0].id}`}
+                  className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl"
+                >
+                  Assignments
+                </Link>
+              )}
+              <Link
+                to={`teachers-meet`}
+                className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl"
+              >
+                Meet
+              </Link>
+              <Link
+                to={`teachers-materials`}
+                className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl"
+              >
+                Materials
+              </Link>
             </div>
           </nav>
         </div>
-        <button onClick={handleLogOut} className='text-gray-200'>Logout</button>
-
+        <button onClick={handleLogOut} className="text-gray-200">
+          Logout
+        </button>
       </div>
       <Outlet />
     </div>

@@ -8,6 +8,10 @@ import TeacherDashboard from '../pages/teachers/TeacherDashboard';
 import TeacherEditPage from '../pages/teachers/TeacherEditPage';
 import AddTask from '../pages/teachers/AddTask';
 import EditTask from '../pages/teachers/EditTask';
+import TeacherMeet from '../pages/teachers/TeacherMeet';
+import TeacherMaterials from '../pages/teachers/TeacherMaterials';
+import AddMaterials from '../pages/teachers/AddMaterials';
+import Assignments from '../pages/teachers/Assignments';
 
 const TeacherRoute = () => {
   return (
@@ -20,6 +24,10 @@ const TeacherRoute = () => {
         <Route path="teachers-edit/:teacherId" element={<TeacherEditPage/>}/>
         <Route path="add-task/:teacherId/:classId" element={<AddTask/>}/>
         <Route path="edit-task/:id" element={<EditTask/>}/>
+        <Route path="teachers-meet/:id" element={<TeacherMeet/>}/>
+        <Route path="teachers-materials/:teacherId/:classId" element={<TeacherMaterials/>} />
+        <Route path="add-material/:teacherId/:classId" element={<AddMaterials/>}/>
+        <Route path="assignments/:taskId/:studentId" element={<Assignments/>}/>
       </Route>
     </Routes>
   );

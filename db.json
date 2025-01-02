@@ -131,7 +131,7 @@
       "major": "Programming",
       "studentIds": [
         "u2",
-        "41c3"
+        "41c3",
         "u2",
         "41c3"
       ],
@@ -229,6 +229,21 @@
         }
       ],
       "id": "bf50"
+    },
+    {
+      "title": "Linear Equations Notes",
+      "description": "Comprehensive guide to solving linear equations.",
+      "likes": [
+        "u2"
+      ],
+      "comments": [
+        {
+          "id": "c5",
+          "userId": "u2",
+          "content": "This was super helpful!"
+        }
+      ],
+      "id": "b12"
     }
   ]
 }

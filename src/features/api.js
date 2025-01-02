@@ -65,6 +65,13 @@ export const api = createApi({
       }),
       providesTags: ['Assignments'],
     }),
+    getMaterials: builder.query({
+      query: () => ({
+        url: '/materials', 
+        method: 'GET',
+      }),
+      providesTags: ['Materials'],
+    }),
   }),
 });
 
@@ -77,4 +84,5 @@ export const {
   useAddAssignmentMutation,
   useUpdateAssignmentMutation,
   useGetAssignmentsByTaskIdQuery,  
+  useGetMaterialsQuery
 } = api;

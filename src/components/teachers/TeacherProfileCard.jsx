@@ -1,33 +1,45 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const TeacherProfileCard = ({img,fullName,major,bio,email,socialLinks,socialLinks2}) => {
+const TeacherProfileCard = ({
+  img,
+  fullName,
+  major,
+  bio,
+  email,
+  socialLinks,
+  socialLinks2,
+}) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const teacherId = user.id;
+
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="font-std mb-10 w-full rounded-2xl bg-white p-10 font-normal leading-relaxed text-gray-900 shadow-2xl">
+      <div className="min-h-screen flex items-center justify-center p-4 ">
+        <div className="font-std mb-10 w-full rounded-3xl bg-white p-10 font-normal leading-relaxed text-gray-900 shadow-2xl">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/3 text-center mb-8 md:mb-0">
               <img
                 src={img}
                 alt="Profile Picture"
-                className="rounded-full w-48 h-48 mx-auto mb-4 border-4 border-indigo-800 transition-transform duration-300 hover:scale-105 ring ring-gray-300"
+                className="rounded-full w-40 h-36 object-cover mx-auto mb-4 border-4 transition-transform duration-300 hover:scale-105 ring ring-gray-300"
               />
               <button className="mt-4 bg-indigo-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-300 ring ring-gray-300 hover:ring-indigo-300">
-                Edit Profile
+                <Link to={`/teachers/teachers-edit/${teacherId}`}>
+                  Edit Profile
+                </Link>
               </button>
             </div>
-            <div className="md:w-2/3 md:pl-8">
+            <div className="md:w-2/3 md:pl-8 ms-2">
               <h1 className="text-2xl font-bold text-indigo-800 mb-2">
-               {fullName}
+                {fullName}
               </h1>
               <p className="text-gray-600 mb-6">{major}</p>
 
               <h2 className="text-xl font-semibold text-indigo-800 mb-4">
-                    Bio 
+                Bio
               </h2>
-              <p className="text-gray-700 mb-6">
-               {bio}
-              </p>
+              <p className="text-gray-700 mb-6">{bio}</p>
 
               <h2 className="text-xl font-semibold text-indigo-800 mb-4">
                 Contact Information
@@ -53,12 +65,17 @@ const TeacherProfileCard = ({img,fullName,major,bio,email,socialLinks,socialLink
                     fill="currentColor"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
-                 {socialLinks} && {socialLinks2}
+                  <a className="block me-2" href="https://linkedin.com">{socialLinks} </a> and
+                  <a className="block ms-2"
+                    href="https://twitter.com"
+                  >
+                    {socialLinks2}
+                  </a>
                 </li>
               </ul>
             </div>

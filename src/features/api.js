@@ -58,7 +58,6 @@ export const api = createApi({
       }),
       invalidatesTags: ["Assignments"],
     }),
-    // Yeni endpoint
     getAssignmentsByTaskId: builder.query({
       query: (taskId) => ({
         url: `/assignments?taskId=${taskId}`,

@@ -57,7 +57,7 @@ const StudentTaskDetails = () => {
         url: assignmentsLink,
         assignDate: new Date().toISOString(),
         status: "unsubmitted",
-        feedback: "Great effort! Improve presentation next time.",
+        feedback: "",
       };
 
       await addAssignment(assignmentData).unwrap();

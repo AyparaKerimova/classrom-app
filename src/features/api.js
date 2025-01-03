@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_API_URL } from '../constants/api.js';
+import { comment } from 'postcss';
 
 export const api = createApi({
   reducerPath: 'api',
@@ -72,6 +73,15 @@ export const api = createApi({
       }),
       providesTags: ['Materials'],
     }),
+    addComment: builder.mutation({
+      query: ({ materialId, comments }) => ({
+        url: `/materials/${materialId}`,
+        method: 'PATCH',
+        body: { comments },
+      }),
+      invalidatesTags: ['Materials'],
+    }),
+    
   }),
 });
 
@@ -84,5 +94,6 @@ export const {
   useAddAssignmentMutation,
   useUpdateAssignmentMutation,
   useGetAssignmentsByTaskIdQuery,  
-  useGetMaterialsQuery
+  useGetMaterialsQuery,
+  useAddCommentMutation
 } = api;

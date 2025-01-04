@@ -9,14 +9,48 @@ const StudentMaterialDetails = () => {
   const { data, isLoading, error } = useGetMaterialsQuery();
   const [comment, setComment] = useState('');
   const [addComment] = useAddCommentMutation();
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
-  const handleAddComment = () => {
+  const handleAddComment = async () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+  
+    if (!user || !user.id) {
+      alert('User not authenticated.');
+      return;
+    }
+  
     if (comment.trim()) {
-      addComment({ materialId: id, comments: comment }).then(() => {
+      const tempElement = document.createElement('div');
+      tempElement.innerHTML = comment;
+      const cleanedComment = tempElement.textContent || tempElement.innerText || '';
+  
+      if (!cleanedComment.trim()) {
+        alert('Please enter a valid comment.');
+        return;
+      }
+  
+      const newComment = {
+        id: `c${Date.now()}`,
+        userId: user.id, 
+        content: cleanedComment.trim(),
+      };
+  
+      const materials = data?.find((item) => item.id === id);
+      const updatedComments = [
+        ...(Array.isArray(materials?.comments) ? materials.comments : []),
+        newComment,
+      ];
+  
+      try {
+        await addComment({ materialId: id, comments: updatedComments }).unwrap();
         setComment('');
-      });
+      } catch (err) {
+        console.error('Failed to add comment:', err);
+        alert('An error occurred while adding your comment. Please try again.');
+      }
     }
   };
+  
 
   if (isLoading)
     return (
@@ -42,7 +76,6 @@ const StudentMaterialDetails = () => {
     );
   }
 
-  // Ensure comments are an array
   const comments = Array.isArray(materials.comments) ? materials.comments : [];
 
   return (
@@ -60,22 +93,45 @@ const StudentMaterialDetails = () => {
 
         <div className="mt-8">
           <h3 className="text-xl font-semibold text-gray-800">Comments</h3>
-          {comments.length > 0 ? (
-            <ul className="mt-4 space-y-4">
-              {comments.map((comment) => (
-                <li
-                  key={comment.id}
-                  className="bg-gray-50 border border-gray-200 rounded-lg p-4 shadow-sm"
-                >
-                  <div className="text-gray-800 font-medium">User {comment.userId}</div>
-                  <p className="mt-2 text-gray-600">{comment.content}</p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-4 text-gray-500">No comments available.</p>
-          )}
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            View Comments
+          </button>
         </div>
+
+        {isModalOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white p-8 rounded shadow-lg max-w-md w-full">
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">Comments</h2>
+
+              <div className="max-h-80 overflow-y-auto space-y-4">
+                {comments.length > 0 ? (
+                  comments.map((comment) => (
+                    <li
+                      key={comment.id}
+                      className="bg-gray-50 border border-gray-200 rounded-lg p-4 shadow-sm"
+                    >
+                      <div className="text-gray-800 font-medium">User {comment.userId}</div>
+                      <p className="mt-2 text-gray-600">{comment.content}</p>
+                    </li>
+                  ))
+                ) : (
+                  <p className="text-gray-500">No comments available.</p>
+                )}
+              </div>
+
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+
 
         <div className="bg-white shadow rounded-lg p-6 mt-10">
           <h3 className="text-lg font-semibold mb-4">Add a Comment</h3>

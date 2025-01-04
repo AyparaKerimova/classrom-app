@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useGetMaterialsQuery } from '../../features/api';
+import { useGetMaterialsQuery, useAddLikesMutation } from '../../features/api';
 import { Link } from 'react-router-dom';
 
 const StudentMaterials = () => {
   const { data, error, isLoading } = useGetMaterialsQuery();
   const [likedMaterials, setLikedMaterials] = useState([]);
+  const [addLikes] = useAddLikesMutation(); 
 
   useEffect(() => {
     const storedLikes = JSON.parse(localStorage.getItem('likedMaterials')) || [];
@@ -12,12 +13,27 @@ const StudentMaterials = () => {
   }, []);
 
   const handleLikeToggle = (materialId) => {
+    const user = JSON.parse(localStorage.getItem('user')); 
+    if (!user || !user.id) {
+      alert('Zəhmət olmasa giriş edin.');
+      return;
+    }
+
     const updatedLikes = likedMaterials.includes(materialId)
-      ? likedMaterials.filter(id => id !== materialId)
+      ? likedMaterials.filter((id) => id !== materialId)
       : [...likedMaterials, materialId];
 
     setLikedMaterials(updatedLikes);
     localStorage.setItem('likedMaterials', JSON.stringify(updatedLikes));
+
+    const updatedMaterial = data.find((material) => material.id === materialId);
+    if (updatedMaterial) {
+      const updatedLikesArray = updatedLikes.includes(materialId)
+        ? [...updatedMaterial.likes, user.id] 
+        : updatedMaterial.likes.filter((userId) => userId !== user.id);
+
+      addLikes({ materialId, likes: updatedLikesArray });
+    }
   };
 
   if (isLoading) {
@@ -59,7 +75,7 @@ const StudentMaterials = () => {
               </div>
             </div>
           </div>
-          <div class="pt-5 text-base font-semibold leading-7">
+          <div className="pt-5 text-base font-semibold leading-7">
             <p>
               <Link
                 to={`${material.id}`} 
@@ -67,11 +83,9 @@ const StudentMaterials = () => {
               >
                 Read the docs &rarr;
               </Link>
-
             </p>
           </div>
         </div>
-
       ))}
     </div>
   );

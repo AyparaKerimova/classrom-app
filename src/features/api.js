@@ -77,11 +77,18 @@ export const api = createApi({
       query: ({ materialId, comments }) => ({
         url: `/materials/${materialId}`,
         method: 'PATCH',
-        body: { comments },
+        body: { comments }, 
       }),
       invalidatesTags: ['Materials'],
     }),
-    
+    addLikes: builder.mutation({
+      query: ({ materialId, likes }) => ({
+        url: `/materials/${materialId}`,
+        method: 'PATCH',
+        body: { likes }, 
+      }),
+      invalidatesTags: ['Materials'],
+    }),
   }),
 });
 
@@ -95,5 +102,6 @@ export const {
   useUpdateAssignmentMutation,
   useGetAssignmentsByTaskIdQuery,  
   useGetMaterialsQuery,
-  useAddCommentMutation
+  useAddCommentMutation,
+  useAddLikesMutation
 } = api;

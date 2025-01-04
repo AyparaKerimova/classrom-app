@@ -219,9 +219,26 @@
       "title": "Linear Equations Notes",
       "description": "Comprehensive guide to solving linear equations.",
       "likes": [
-        "u2"
+        "u2",
+        "39b6"
       ],
-      "comments": "<p>test</p>",
+      "comments": [
+        {
+          "id": "c1",
+          "userId": "u2",
+          "content": "This was super helpful!"
+        },
+        {
+          "id": "c1735998742756",
+          "userId": "39b6",
+          "content": "testtt"
+        },
+        {
+          "id": "c1735999229697",
+          "userId": "39b6",
+          "content": "salammm"
+        }
+      ],
       "id": "bf50"
     },
     {
@@ -229,7 +246,8 @@
       "description": "test_test",
       "likes": [
         "u5",
-        "a1"
+        "a1",
+        "39b6"
       ],
       "comments": [
         {

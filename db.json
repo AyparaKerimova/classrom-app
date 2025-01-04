@@ -3,18 +3,17 @@
     {
       "id": "u1",
       "fullName": "John Doe",
-      "username": "johndoe",
+      "username": "johndd",
       "email": "john.doe@example.com",
       "password": "password123",
-      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735458979/uwnhjvdrfbew4rxrcaaw.jpg",
+      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735898670/sxnpl7lmk5trxw0vsysh.jpg",
       "role": "teacher",
       "major": "IT",
       "bio": "math teacher and love animals,students and nature",
       "socialLinks": {
         "linkedin": "https://linkedin.com/in/johndoe",
         "twitter": "https://twitter.com/johndoe"
-      },
-      "confirmPassword": ""
+      }
     },
     {
       "id": "u2",
@@ -29,6 +28,10 @@
         {
           "taskId": "t1",
           "grade": 0
+        },
+        {
+          "taskId": "3aa6",
+          "grade": 100
         }
       ],
       "overallGrade": 0
@@ -89,6 +92,10 @@
         {
           "taskId": "t1",
           "grade": 0
+        },
+        {
+          "taskId": "3aa6",
+          "grade": 45
         }
       ],
       "overallGrade": 0
@@ -109,9 +116,7 @@
           "grade": 0
         }
       ],
-      "overallGrade": 0,
-      "username": "testteacher",
-      "confirmPassword": ""
+      "overallGrade": 0
     }
   ],
   "classes": [
@@ -162,7 +167,7 @@
       "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       "assignDate": "2024-01-15T10:00:00Z",
       "status": "submitted",
-      "feedback": "Great effort! Improve presentation next time."
+      "feedback": "Good job Jane"
     },
     {
       "id": "a2",
@@ -171,7 +176,7 @@
       "url": "https://www.hq.nasa.gov/alsj/a17/A17_FlightPlan.pdf",
       "assignDate": "2024-01-16T12:00:00Z",
       "status": "pending",
-      "feedback": ""
+      "feedback": "i didnt want this sorry"
     }
   ],
   "invitations": [

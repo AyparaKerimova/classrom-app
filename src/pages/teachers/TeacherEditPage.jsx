@@ -42,7 +42,6 @@ const TeacherEditPage = () => {
       major: teacher?.major || "",
       bio: teacher?.bio || "",
       password: "",
-      confirmPassword: "",
     },
     enableReinitialize: true,
     validationSchema: userEditSchema,

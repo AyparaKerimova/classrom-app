@@ -29,7 +29,7 @@ const Register = () => {
   const formik = useFormik({
     initialValues: {
       fullName: "",
-      userName: "",
+      username: "",
       email: "",
       password: "",
       profileImage: null,

@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "@tinymce/tinymce-react": "^5.1.1",
+    "@zegocloud/zego-uikit-prebuilt": "^2.14.0",
     "axios": "^1.7.9",
     "cloudinary-react": "^1.8.1",
     "dompurify": "^3.2.3",
@@ -27,7 +28,8 @@
     "sweetalert2": "^11.15.3",
     "swiper": "^11.1.15",
     "tinymce": "^7.6.0",
-    "yup": "^1.6.1"
+    "yup": "^1.6.1",
+    "zego-zim-web": "^2.16.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

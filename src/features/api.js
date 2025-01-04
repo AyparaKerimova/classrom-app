@@ -1,11 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_API_URL } from '../constants/api.js';
-import { comment } from 'postcss';
 
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_API_URL }),
-  tagTypes: ['User', 'Tasks', 'Assignments'],
+  tagTypes: ['User', 'Tasks', 'Assignments', 'Materials'],
   endpoints: (builder) => ({
     login: builder.query({
       query: () => ({
@@ -54,10 +53,10 @@ export const api = createApi({
     updateAssignment: builder.mutation({
       query: ({ id, ...update }) => ({
         url: `/assignments/${id}`,
-        method: "PATCH",
+        method: 'PATCH',
         body: update,
       }),
-      invalidatesTags: ["Assignments"],
+      invalidatesTags: ['Assignments'],
     }),
     getAssignmentsByTaskId: builder.query({
       query: (taskId) => ({
@@ -66,9 +65,17 @@ export const api = createApi({
       }),
       providesTags: ['Assignments'],
     }),
+    updateTaskAssignments: builder.mutation({
+      query: ({ taskId, assignments }) => ({
+        url: `/tasks/${taskId}`,
+        method: 'PATCH',
+        body: { assignments },
+      }),
+      invalidatesTags: ['Tasks'],
+    }),
     getMaterials: builder.query({
       query: () => ({
-        url: '/materials', 
+        url: '/materials',
         method: 'GET',
       }),
       providesTags: ['Materials'],
@@ -77,7 +84,7 @@ export const api = createApi({
       query: ({ materialId, comments }) => ({
         url: `/materials/${materialId}`,
         method: 'PATCH',
-        body: { comments }, 
+        body: { comments },
       }),
       invalidatesTags: ['Materials'],
     }),
@@ -85,7 +92,7 @@ export const api = createApi({
       query: ({ materialId, likes }) => ({
         url: `/materials/${materialId}`,
         method: 'PATCH',
-        body: { likes }, 
+        body: { likes },
       }),
       invalidatesTags: ['Materials'],
     }),
@@ -100,8 +107,9 @@ export const {
   useGetUserByIdQuery,
   useAddAssignmentMutation,
   useUpdateAssignmentMutation,
-  useGetAssignmentsByTaskIdQuery,  
+  useGetAssignmentsByTaskIdQuery,
+  useUpdateTaskAssignmentsMutation,
   useGetMaterialsQuery,
   useAddCommentMutation,
-  useAddLikesMutation
+  useAddLikesMutation,
 } = api;

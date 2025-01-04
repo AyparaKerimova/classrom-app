@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import moment from "moment";
+import { studentGradeSchema } from "../../validations/student.assignment.validation.js";
 
 const AddGrade = () => {
   const { id } = useParams();
@@ -22,20 +22,20 @@ const AddGrade = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, [id]);
 
+  const updateOverallGrade = (grades) => {
+    if (!grades || grades.length === 0) return 0;
+    
+    const totalGrade = grades.reduce((sum, grade) => sum + grade.grade, 0);
+    
+    return totalGrade / grades.length;
+  };
+
   const formik = useFormik({
     initialValues: {
       grade: "",
       feedback: "",
     },
-    validationSchema: Yup.object({
-      grade: Yup.number()
-        .min(0, "Grade must be at least 0")
-        .max(100, "Grade cannot exceed 100")
-        .required("Grade is required"),
-      feedback: Yup.string()
-        .max(500, "Feedback must be under 500 characters")
-        .required("Feedback is required"),
-    }),
+    validationSchema:studentGradeSchema,
     onSubmit: (values) => {
       if (!student || !assignment) {
         return;
@@ -50,7 +50,9 @@ const AddGrade = () => {
         updatedGrades.push({ taskId: assignment.taskId, grade: values.grade });
       }
 
-      const updatedStudent = { ...student, grades: updatedGrades };
+      const updatedOverallGrade = updateOverallGrade(updatedGrades);
+
+      const updatedStudent = { ...student, grades: updatedGrades, overallGrade: updatedOverallGrade };
 
       fetch(`http://localhost:3000/users/${student.id}`, {
         method: "PUT",

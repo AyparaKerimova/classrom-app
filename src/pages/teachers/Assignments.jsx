@@ -42,15 +42,15 @@ const Assignments = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">
-      <ul className="bg-white shadow overflow-hidden rounded-md w-full">
+      <ul className="overflow-hidden rounded-md w-full">
         {assignments.map((assignment) => (
-          <li key={assignment.id} className="border-t border-gray-200 w-full">
+          <li key={assignment.id} style={{ width: "80vw" }} className="mx-5 shadow font-normal mt-2 rounded-lg border">
             <div className="px-6 py-5 sm:px-8">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">
+                <h3 className="text-lg font-medium text-gray-900">
                   Assignment #{assignment.id}
                 </h3>
-                <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                <p className="mt-1 text-sm text-gray-500">
                   Added by: {getStudentFullName(assignment.studentId)}
                 </p>
               </div>

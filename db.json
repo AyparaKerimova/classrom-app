@@ -31,10 +31,10 @@
         },
         {
           "taskId": "3aa6",
-          "grade": 100
+          "grade": 60
         }
       ],
-      "overallGrade": 0
+      "overallGrade": 30
     },
     {
       "id": "7d33",
@@ -95,10 +95,10 @@
         },
         {
           "taskId": "3aa6",
-          "grade": 45
+          "grade": 99
         }
       ],
-      "overallGrade": 0
+      "overallGrade": 49.5
     },
     {
       "id": "56e9",
@@ -149,7 +149,7 @@
     {
       "id": "3aa6",
       "title": "Learn clear code/rtk query ",
-      "description": "<p>please watch all videos and do your all tasks&nbsp;</p>",
+      "description": "<p>please watch all <strong>videos</strong> and do your all <strong>tasks</strong>&nbsp;</p>",
       "topic": "react",
       "deadline": "2025-02-21T17:07",
       "classId": "c1",
@@ -167,7 +167,8 @@
       "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       "assignDate": "2024-01-15T10:00:00Z",
       "status": "submitted",
-      "feedback": "Good job Jane"
+      "feedback": "not very good",
+      "grade": 80
     },
     {
       "id": "a2",
@@ -176,7 +177,8 @@
       "url": "https://www.hq.nasa.gov/alsj/a17/A17_FlightPlan.pdf",
       "assignDate": "2024-01-16T12:00:00Z",
       "status": "pending",
-      "feedback": "i didnt want this sorry"
+      "feedback": "excellent!",
+      "grade": 40
     }
   ],
   "invitations": [

@@ -13,6 +13,7 @@ import TeacherMaterials from '../pages/teachers/TeacherMaterials';
 import AddMaterials from '../pages/teachers/AddMaterials';
 import Assignments from '../pages/teachers/Assignments';
 import AddGrade from '../pages/teachers/AddGrade';
+import Memories from '../pages/teachers/Memories';
 
 const TeacherRoute = () => {
   return (
@@ -30,6 +31,7 @@ const TeacherRoute = () => {
         <Route path="add-material/:teacherId/:classId" element={<AddMaterials/>}/>
         <Route path="assignments/:taskId/:studentId" element={<Assignments/>}/>
         <Route path="add-grade/:id" element={<AddGrade/>}/>
+        <Route path="memories" element={<Memories/>}/>
       </Route>
     </Routes>
   );

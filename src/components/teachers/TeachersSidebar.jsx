@@ -83,6 +83,12 @@ const TeachersSidebar = () => {
               >
                 Materials
               </Link>
+              <Link
+                to={`memories`}
+                className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl"
+              >
+                Memories
+              </Link>
             </div>
           </nav>
         </div>

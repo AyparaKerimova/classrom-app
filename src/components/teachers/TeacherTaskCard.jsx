@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const TeacherTaskCard = ({title,description,deadline,deleteTask,id}) => {
   return (
     <>
-      <div style={{width:"80vw"}} className="px-4 py-4 mx-5 font-normal bg-gray-300 rounded-lg">
+      <div style={{width:"80vw"}} className="px-4 py-4 mx-5 font-normal rounded-lg shadow border">
         <div className="flex flex-col justify-between md:flex-row">
             <h1 className="mb-2 text-semibold">
                 {title}

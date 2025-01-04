@@ -1,16 +1,18 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
-import VideoPlayer from '../../components/common/VideoPlayer';
+import img1 from "../../assets/media/sumgayit.jpeg"
+import img2 from "../../assets/media/debuglegends.jpeg"
+import img3 from "../../assets/media/dynamicdeployers.JPG"
+import img4 from "../../assets/media/christmas.jpeg"
 
 const TeacherDashboard = () => {
-  
   return (
     <>
-      {/* <Swiper
+      <Swiper
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
@@ -21,19 +23,21 @@ const TeacherDashboard = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
-      </Swiper> */}
-      <VideoPlayer/>
+        <SwiperSlide>
+          <img src={img1} alt="" className="w-full h-full object-cover" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={img2} alt="" className="w-full h-full object-cover" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={img3} alt="" className="w-full h-full object-cover" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={img4} alt="" className="w-full h-full object-cover" />
+        </SwiperSlide>
+      </Swiper>
     </>
-  )
+  );
 }
 
-export default TeacherDashboard
+export default TeacherDashboard;

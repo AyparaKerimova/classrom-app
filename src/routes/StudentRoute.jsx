@@ -7,6 +7,7 @@ import StudentProfile from '../pages/students/StudentProfile'
 import StudentTaskDetails from '../pages/students/StudentsTasksDetails'
 import StudentMaterials from '../pages/students/StudentMaterials'
 import StudentMaterialsDetails from '../pages/students/StudentMaterialsDetails'
+import StudentMeet from '../pages/students/StudentMeet'
 
 const StudentRoute = () => {
   return (
@@ -18,6 +19,7 @@ const StudentRoute = () => {
             <Route path='students-tasks/:id' element={<StudentTaskDetails/>}/>
             <Route path='students-materials' element={<StudentMaterials/>}/>
             <Route path='students-materials/:id' element={<StudentMaterialsDetails/>}/>
+            <Route path='students-meet' element={<StudentMeet/>}/>
         </Route>
     </Routes>
   )

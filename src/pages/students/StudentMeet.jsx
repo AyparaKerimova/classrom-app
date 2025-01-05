@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ZegoMeet from "../../components/teachers/ZegoMeet";
 
-function TeacherMeet() {
+function StudentMeet() {
   const [roomID, setRoomID] = useState("");
   const [userName, setUserName] = useState("");
   const [isInRoom, setIsInRoom] = useState(false);
@@ -74,4 +74,4 @@ const inputStyles = {
   width: "300px",
 };
 
-export default TeacherMeet;
+export default StudentMeet;

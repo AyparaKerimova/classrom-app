@@ -4,7 +4,7 @@ import { BASE_API_URL } from '../constants/api.js';
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_API_URL }),
-  tagTypes: ['User', 'Tasks', 'Assignments'],
+  tagTypes: ['User', 'Tasks', 'Assignments', 'Materials'],
   endpoints: (builder) => ({
     login: builder.query({
       query: () => ({
@@ -53,10 +53,10 @@ export const api = createApi({
     updateAssignment: builder.mutation({
       query: ({ id, ...update }) => ({
         url: `/assignments/${id}`,
-        method: "PATCH",
+        method: 'PATCH',
         body: update,
       }),
-      invalidatesTags: ["Assignments"],
+      invalidatesTags: ['Assignments'],
     }),
     getAssignmentsByTaskId: builder.query({
       query: (taskId) => ({
@@ -65,6 +65,64 @@ export const api = createApi({
       }),
       providesTags: ['Assignments'],
     }),
+    updateTaskAssignments: builder.mutation({
+      query: ({ taskId, assignments }) => ({
+        url: `/tasks/${taskId}`,
+        method: 'PATCH',
+        body: { assignments },
+      }),
+      invalidatesTags: ['Tasks'],
+    }),
+    getMaterials: builder.query({
+      query: () => ({
+        url: '/materials',
+        method: 'GET',
+      }),
+      providesTags: ['Materials'],
+    }),
+    addComment: builder.mutation({
+      query: ({ materialId, comments }) => ({
+        url: `/materials/${materialId}`,
+        method: 'PATCH',
+        body: { comments },
+      }),
+      invalidatesTags: ['Materials'],
+    }),
+    addLikes: builder.mutation({
+      query: ({ materialId, likes }) => ({
+        url: `/materials/${materialId}`,
+        method: 'PATCH',
+        body: { likes },
+      }),
+      invalidatesTags: ['Materials'],
+    }),
+    getClassesByStudentId: builder.query({
+      query: (studentId) => ({
+        url: `/classes`,
+        method: 'GET',
+      }),
+      transformResponse: async (classes, _, studentId) => {
+        const studentClasses = classes.filter((classItem) =>
+          classItem.studentIds.map((id) => id.trim()).includes(studentId)
+        );
+        const teachersResponse = await fetch(`${BASE_API_URL}/users`);
+        const teachers = await teachersResponse.json();
+
+        return studentClasses.map((classItem) => {
+          const teacher = teachers.find((teacher) => teacher.id === classItem.teacherId);
+          return { ...classItem, teacherName: teacher?.fullName || 'No name' };
+        });
+      },
+      providesTags: ['Classes'],
+    }),
+    getInvitationsByStudentId: builder.query({
+      query: (studentId) => ({
+        url: `/invitations?studentId=${studentId}`,
+        method: 'GET',
+      }),
+      providesTags: ['Invitations'],
+    }),
+    
   }),
 });
 
@@ -76,5 +134,11 @@ export const {
   useGetUserByIdQuery,
   useAddAssignmentMutation,
   useUpdateAssignmentMutation,
-  useGetAssignmentsByTaskIdQuery,  
+  useGetAssignmentsByTaskIdQuery,
+  useUpdateTaskAssignmentsMutation,
+  useGetMaterialsQuery,
+  useAddCommentMutation,
+  useAddLikesMutation,
+  useGetClassesByStudentIdQuery,
+  useGetInvitationsByStudentIdQuery 
 } = api;

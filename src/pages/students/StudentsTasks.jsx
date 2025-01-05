@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router';
+import React, { useState, useEffect } from 'react';
 import { useGetTasksQuery } from '../../features/api';
+import { Link } from 'react-router-dom';
 
 const StudentsTasks = () => {
   const { data: tasks = [], isLoading, isError } = useGetTasksQuery();
   const [expandedTaskId, setExpandedTaskId] = useState(null);
+  const [classId, setClassId] = useState([]);
+
+  useEffect(() => {
+    const userClasses = JSON.parse(localStorage.getItem('classes')) || [];
+    const classIds = userClasses.map((userClass) => userClass.id);
+    console.log("Class IDs :", classIds);
+    setClassId(classIds);
+  }, []);
 
   const toggleAccordion = (id) => {
     setExpandedTaskId(expandedTaskId === id ? null : id);
   };
+
+  const filteredTasks = tasks.filter((task) => {
+    console.log(`Checking task classId: ${task.classId}, against user classId: ${classId}`);
+    return classId.includes(task.classId);
+  });
 
   if (isLoading) {
     return <div className="p-4 bg-gray-100 min-h-screen">Loading tasks...</div>;
@@ -22,11 +35,15 @@ const StudentsTasks = () => {
     );
   }
 
+  if (filteredTasks.length === 0) {
+    return <div>No tasks available for your class.</div>;
+  }
+
   return (
     <div className="p-4 w-full bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold mb-4">Tasks</h1>
       <div className="bg-white shadow-md rounded-lg divide-y divide-gray-200">
-        {tasks.map((task) => (
+        {filteredTasks.map((task) => (
           <div key={task.id}>
             <div
               className="flex items-center justify-between p-4 hover:bg-gray-50 cursor-pointer"

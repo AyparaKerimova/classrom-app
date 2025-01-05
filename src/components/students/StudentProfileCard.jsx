@@ -8,7 +8,7 @@ const StudentProfileCard = ({
   overallGrade
 }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 ml-10">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gray-100 ml-10">
       <div className="font-std w-full max-w-4xl rounded-2xl bg-white p-10 md:p-14 font-normal leading-relaxed text-gray-900 shadow-2xl">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/3 text-center mb-8 md:mb-0">

@@ -6,4 +6,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ['@tinymce/tinymce-react', 'tinymce'],
   },
-});
+  assetsInclude: ['**/*.JPG', '**/*.jpg'], 
+})

@@ -3,18 +3,17 @@
     {
       "id": "u1",
       "fullName": "John Doe",
-      "username": "johndoe",
+      "username": "johndd",
       "email": "john.doe@example.com",
       "password": "password123",
-      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735458979/uwnhjvdrfbew4rxrcaaw.jpg",
+      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735898670/sxnpl7lmk5trxw0vsysh.jpg",
       "role": "teacher",
       "major": "IT",
       "bio": "math teacher and love animals,students and nature",
       "socialLinks": {
         "linkedin": "https://linkedin.com/in/johndoe",
         "twitter": "https://twitter.com/johndoe"
-      },
-      "confirmPassword": ""
+      }
     },
     {
       "id": "u2",
@@ -28,15 +27,19 @@
       "grades": [
         {
           "taskId": "t1",
-          "grade": 85
+          "grade": 0
+        },
+        {
+          "taskId": "3aa6",
+          "grade": 60
         }
       ],
-      "overallGrade": 87
+      "overallGrade": 30
     },
     {
       "id": "7d33",
       "fullName": "Aypara Kerimova",
-      "userName": "aypara",
+      "username": "aypara",
       "email": "ayparakerimova004@gmail.com",
       "password": "aypara123",
       "role": "student",
@@ -47,76 +50,73 @@
         "twitter": ""
       },
       "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
-      "imageId": "ejl90krespmluay19v7o"
+      "imageId": "ejl90krespmluay19v7o",
+      "grades": [
+        {
+          "taskId": "t1",
+          "grade": 0
+        }
+      ],
+      "overallGrade": 0
     },
     {
       "id": "fe66",
       "fullName": "test",
-      "userName": "testuser",
+      "username": "testuser",
       "email": "sj@shdh",
       "password": "123sjfg12",
       "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735312853/chfhjbsfzgz9qlsla7hs.webp",
       "role": "student",
       "major": "",
       "bio": "",
-      "imageId": "chfhjbsfzgz9qlsla7hs"
-    },
-    {
-      "id": "32a9",
-      "fullName": "teacher ",
-      "userName": "teacher123",
-      "email": "johndoe@example.com",
-      "password": "teacher123",
-      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735456488/pr0f2e66s3iobokhm2y9.webp",
-      "role": "teacher",
-      "major": "IT",
-      "bio": " i love IT ",
-      "username": "adead",
-      "confirmPassword": ""
-    },
-    {
-      "id": "39b6",
-      "fullName": "testuser",
-      "userName": "janesmith",
-      "email": "johndoe@example.com",
-      "password": "abc123456",
-      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
-      "role": "student",
-      "major": "",
-      "bio": ""
+      "imageId": "chfhjbsfzgz9qlsla7hs",
+      "grades": [
+        {
+          "taskId": "t1",
+          "grade": 0
+        }
+      ],
+      "overallGrade": 0
     },
     {
       "id": "41c3",
       "fullName": "final",
-      "userName": "finaluser",
+      "username": "finaluser",
       "email": "sj@shdh.edu",
       "password": "12345sjsj",
       "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
       "role": "student",
       "major": "",
-      "bio": ""
+      "bio": "",
+      "grades": [
+        {
+          "taskId": "t1",
+          "grade": 0
+        },
+        {
+          "taskId": "3aa6",
+          "grade": 99
+        }
+      ],
+      "overallGrade": 49.5
     },
     {
-      "id": "6897",
-      "fullName": "test",
-      "userName": "TestUser",
-      "email": "ayparakerimova00@gmail.com",
-      "password": "aypara1234",
-      "profileImage": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
-      "role": "student",
-      "major": "",
-      "bio": ""
-    },
-    {
-      "id": "789d",
-      "fullName": "test",
-      "userName": "aypara",
-      "email": "admin@example.com",
-      "password": "abc12345",
-      "profileImage": {},
-      "role": "student",
-      "major": "",
-      "bio": ""
+      "id": "56e9",
+      "fullName": "teacher ",
+      "username": "testeacher",
+      "email": "testteacher@gmail.com",
+      "password": "pass1234",
+      "profileImage": "https://res.cloudinary.com/dug3akriz/image/upload/v1735813168/iqrw6fgxrh5yzbfuzt1j.jpg",
+      "role": "teacher",
+      "major": "Programming",
+      "bio": "I love programming",
+      "grades": [
+        {
+          "taskId": "",
+          "grade": 0
+        }
+      ],
+      "overallGrade": 0
     }
   ],
   "classes": [
@@ -131,9 +131,9 @@
       "major": "Programming",
       "studentIds": [
         "u2",
-        "41c3"
-        "u2",
-        "41c3"
+        "41c3",
+        "39b6",
+        "7d33"
       ],
       "schedule": [
         {
@@ -150,50 +150,37 @@
   "tasks": [
     {
       "id": "3aa6",
-      "title": "Learn clear code/rtk query task",
-      "description": "please watch all videos and do your all tasks",
+      "title": "Learn clear code/rtk query ",
+      "description": "<p>please watch all <strong>videos</strong> and do your all <strong>tasks</strong>&nbsp;</p>",
       "topic": "react",
-      "deadline": "2024-12-31T12:07",
+      "deadline": "2025-02-21T17:07",
       "classId": "c1",
       "teacherId": "u1",
-      "assignments": [
-        "a1"
-      ],
-      "completionRate": 50
-    },
-    {
-      "id": "t2",
-      "classId": "c2",
-      "title": "test",
-      "description": "Lorem impus",
-      "topic": "test",
-      "deadline": "2024-01-20T23:59:59Z",
-      "createdAt": "2024-01-10T09:00:00Z",
-      "teacherId": "u1",
-      "assignments": [
-        "a2"
-      ],
-      "completionRate": 60
+      "assignmentIds": [],
+      "completionRate": 0,
+      "createdAt": "2024-12-30T08:07:53.155Z"
     }
   ],
   "assignments": [
     {
       "id": "a1",
-      "taskId": "t1",
+      "taskId": "3aa6",
       "studentId": "u2",
-      "url": "https://example.com/assignment1.pdf",
+      "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       "assignDate": "2024-01-15T10:00:00Z",
-      "status": "unsubmitted",
-      "feedback": "Great effort! Improve presentation next time."
+      "status": "submitted",
+      "feedback": "not very good",
+      "grade": 80
     },
     {
-      "id": "b168",
-      "taskId": "t1",
-      "studentId": "39b6",
-      "url": "http://localhost:5173/students/students-tasks/t1",
-      "assignDate": "2025-01-01T20:16:23.524Z",
-      "status": "submit",
-      "feedback": "Great effort! Improve presentation next time."
+      "id": "a2",
+      "taskId": "3aa6",
+      "studentId": "41c3",
+      "url": "https://www.hq.nasa.gov/alsj/a17/A17_FlightPlan.pdf",
+      "assignDate": "2024-01-16T12:00:00Z",
+      "status": "pending",
+      "feedback": "excellent!",
+      "grade": 40
     }
   ],
   "invitations": [
@@ -203,6 +190,34 @@
       "studentId": "u2",
       "status": "accepted",
       "expiresAt": "2024-01-15T23:59:59Z"
+    },
+    {
+      "id": "inv_1735803973154",
+      "classId": "c1",
+      "studentId": "789d",
+      "status": "pending",
+      "expiresAt": "2025-01-09T07:46:13.154Z"
+    },
+    {
+      "id": "inv_1735803987430",
+      "classId": "c1",
+      "studentId": "7d33",
+      "status": "pending",
+      "expiresAt": "2025-01-09T07:46:27.430Z"
+    },
+    {
+      "id": "inv_1735804378930",
+      "classId": "c1",
+      "studentId": "789d",
+      "status": "pending",
+      "expiresAt": "2025-01-09T07:52:58.930Z"
+    },
+    {
+      "id": "inv_1735804408431",
+      "classId": "c1",
+      "studentId": "6897",
+      "status": "pending",
+      "expiresAt": "2025-01-09T07:53:28.431Z"
     }
   ],
   "announcements": [
@@ -226,6 +241,11 @@
           "id": "c1",
           "userId": "u2",
           "content": "This was super helpful!"
+        },
+        {
+          "id": "c1736085499670",
+          "userId": "7d33",
+          "content": "this is great"
         }
       ],
       "id": "bf50"

@@ -1,0 +1,15 @@
+{
+    "welcome": "Tətbiqə xoş gəlmisiniz",
+    "sidebar": {
+      "dashboard": "İdarə paneli",
+      "profile": "Profil",
+      "tasks": "Tapşırıqlar",
+      "students": "Tələbələr",
+      "assignments": "Tapşırıqlar",
+      "meet": "Görüş",
+      "materials": "Materiallar",
+      "memories": "Xatirələr",
+      "logout": "Çıxış"
+    }
+  }
+  

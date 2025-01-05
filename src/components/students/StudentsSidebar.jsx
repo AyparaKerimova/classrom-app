@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const StudentsSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -8,6 +9,8 @@ const StudentsSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
+  const { t } = useTranslation();
+  
   return (
     <>
       <div className="flex h-screen bg-gray-100">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 const TeachersSidebar = () => {
@@ -9,7 +10,7 @@ const TeachersSidebar = () => {
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
-
+  const { t } = useTranslation();
   const user = JSON.parse(localStorage.getItem('user'));
   const teacherId = user.id;
   const classId = user.classes && user.classes.length > 0 ? user.classes[0].id : null;
@@ -81,7 +82,7 @@ const TeachersSidebar = () => {
                   isCollapsed ? "justify-center" : ""
                 }`}
               >
-                Dashboard
+                {t('dashboard')}
               </Link>
             </div>
             <div className="flex flex-col flex-1 gap-3">
@@ -91,7 +92,7 @@ const TeachersSidebar = () => {
                   isCollapsed ? "justify-center" : ""
                 }`}
               >
-                Profile
+                {t('profile')}
               </Link>
               <Link
                 to={`teachers-tasks/${teacherId}/${classId}`}
@@ -99,7 +100,7 @@ const TeachersSidebar = () => {
                   isCollapsed ? "justify-center" : ""
                 }`}
               >
-                Tasks
+                {t('tasks')}
               </Link>
               <Link
                 to={`all-students/${teacherId}/${classId}`}
@@ -107,7 +108,7 @@ const TeachersSidebar = () => {
                   isCollapsed ? "justify-center" : ""
                 }`}
               >
-                Students
+                {t('students')}
               </Link>
               {tasks.length > 0 && students.length > 0 && (
                 <Link
@@ -116,7 +117,7 @@ const TeachersSidebar = () => {
                     isCollapsed ? "justify-center" : ""
                   }`}
                 >
-                  Assignments
+                  {t('assignments')}
                 </Link>
               )}
               <Link
@@ -125,7 +126,7 @@ const TeachersSidebar = () => {
                   isCollapsed ? "justify-center" : ""
                 }`}
               >
-                Meet
+                {t('meet')}
               </Link>
               <Link
                 to={`teachers-materials`}
@@ -141,7 +142,7 @@ const TeachersSidebar = () => {
                   isCollapsed ? "justify-center" : ""
                 }`}
               >
-                Memories
+              {t('memories')}
               </Link>
             </div>
           </nav>
@@ -150,7 +151,7 @@ const TeachersSidebar = () => {
           onClick={handleLogOut}
           className={`text-gray-200 px-4 py-2 ${isCollapsed ? "justify-center" : ""}`}
         >
-          Logout
+          {t('logout')}
         </button>
       </div>
       <Outlet />

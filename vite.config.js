@@ -4,12 +4,14 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    include: ['@tinymce/tinymce-react', 'tinymce', 'react-quill'], // react-quill eklendi
+    include: ['@tinymce/tinymce-react', 'tinymce'],
   },
-  build: {
-    rollupOptions: {
-      external: ['react-quill/dist/quill.snow.css'], // CSS dosyasını harici olarak işaretle
+  assetsInclude: ['**/*.JPG', '**/*.jpg'],
+  css: {
+    preprocessorOptions: {
+      css: {
+        additionalData: `@import "react-quill/dist/quill.snow.css";`,
+      },
     },
   },
-  assetsInclude: ['**/*.JPG', '**/*.jpg'], // JPG uzantılı dosyalar dahil
 });

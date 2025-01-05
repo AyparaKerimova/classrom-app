@@ -28,7 +28,7 @@ const TeacherDashboard = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src={img1} alt="" className="w-full h-full object-cover" />
+          <img src={img4} alt="" className="w-full h-full object-cover" />
         </SwiperSlide>
         <SwiperSlide>
           <img src={img2} alt="" className="w-full h-full object-cover" />
@@ -37,7 +37,7 @@ const TeacherDashboard = () => {
           <img src={img3} alt="" className="w-full h-full object-cover" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={img4} alt="" className="w-full h-full object-cover" />
+          <img src={img1} alt="" className="w-full h-full object-cover" />
         </SwiperSlide>
       </Swiper>
     </>

@@ -20,7 +20,7 @@ export default function StudentDashboard() {
       setUserId(storedUser.id);
     }
   }, []);
-  
+
   useEffect(() => {
     const storedClassData = JSON.parse(localStorage.getItem('classes'));
     if (storedClassData) {
@@ -80,8 +80,8 @@ export default function StudentDashboard() {
 
   return (
     <>
-    <Helmet>
-          <title>Student Dashboard</title>
+      <Helmet>
+        <title>Student Dashboard</title>
       </Helmet>
       <div className="container mx-auto p-4">
         <div className="header mb-6">
@@ -95,7 +95,7 @@ export default function StudentDashboard() {
           <div className="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg filter group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200"></div>
           <button
             onClick={() => handleInvitationsClick(invitations[0])}
-            className="relative inline-flex items-center justify-center px-5 py-2 text-base font-bold text-white transition-all duration-200 bg-gray-900 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-gray-600 rounded"
+            className=" relative inline-flex items-center justify-center px-5 py-2 text-base font-bold text-white transition-all duration-200 bg-gray-900 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-gray-600 rounded"
           >
             Invitations
           </button>
@@ -135,31 +135,19 @@ export default function StudentDashboard() {
             className="mySwiper"
           >
             <SwiperSlide style={{ height: "650px" }}>
-              <img className="w-full h-full object-cover rounded-lg" src='https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp' alt="slide" />
+              <img className="w-full h-full object-cover rounded-lg" src='/src/assets/media/NewYear.jpg' alt="slide" />
             </SwiperSlide>
             <SwiperSlide style={{ height: "650px" }}>
-              <img className="w-full h-full object-cover rounded-lg" src='https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg' alt="slide" />
+              <img className="w-full h-full object-cover rounded-lg" src='/src/assets/media/christmas.jpeg' alt="slide" />
             </SwiperSlide>
             <SwiperSlide style={{ height: "650px" }}>
-              <img className="w-full h-full object-cover rounded-lg" src='https://th.bing.com/th/id/OIG1.wQ7nqzXG6LLji1s3MrOP' alt="slide" />
+              <img className="w-full h-full object-cover rounded-lg" src='/src/assets/media/debuglegends.jpeg' alt="slide" />
             </SwiperSlide>
             <SwiperSlide style={{ height: "650px" }}>
-              <img className="w-full h-full object-cover rounded-lg" src='https://th.bing.com/th/id/OIG4.7h3EEAkofdcgjDEjeOyg' alt="slide" />
+              <img className="w-full h-full object-cover rounded-lg" src='/src/assets/media/dynamicdeployers.JPG' alt="slide" />
             </SwiperSlide>
             <SwiperSlide style={{ height: "650px" }}>
-              <img className="w-full h-full object-cover rounded-lg" src='https://imageupscaler.com/wp-content/uploads/2024/07/deblured-cutty-fox.jpg' alt="slide" />
-            </SwiperSlide>
-            <SwiperSlide style={{ height: "650px" }}>
-              <img className="w-full h-full object-cover rounded-lg" src='https://replicate.delivery/pbxt/JF3foGR90vm9BXSEXNaYkaeVKHYbJPinmpbMFvRtlDpH4MMk/out-0-1.png' alt="slide" />
-            </SwiperSlide>
-            <SwiperSlide style={{ height: "650px" }}>
-              <img className="w-full h-full object-cover rounded-lg" src='https://www.piclumen.com/wp-content/uploads/2024/10/piclumen-first-01.webp' alt="slide" />
-            </SwiperSlide>
-            <SwiperSlide style={{ height: "650px" }}>
-              <img className="w-full h-full object-cover rounded-lg" src='https://th.bing.com/th/id/OIG4.D1xlg_PkAbPbJDw14g2r' alt="slide" />
-            </SwiperSlide>
-            <SwiperSlide style={{ height: "650px" }}>
-              <img className="w-full h-full object-cover rounded-lg" src='https://assets.monica.im/tools-web/_next/static/media/imageGeneratorFeatureIntro1.9f5e7e23.webp' alt="slide" />
+              <img className="w-full h-full object-cover rounded-lg" src='/src/assets/media/sumgayit.jpeg' alt="slide" />
             </SwiperSlide>
           </Swiper>
         </div>

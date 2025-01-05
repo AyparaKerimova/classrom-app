@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
+import Swal from "sweetalert2";
 import { userEditSchema } from "../../validations/user.edit.validation";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 
 const TeacherEditPage = () => {
   const [teacher, setTeacher] = useState(null);
   const teacherId = JSON.parse(localStorage.getItem("user"))?.id;
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (teacherId) {
@@ -17,23 +20,29 @@ const TeacherEditPage = () => {
       console.error("Teacher ID is not found in localStorage!");
     }
   }, [teacherId]);
+
   const uploadImageToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "userprofileimage");
     formData.append("cloud_name", "dug3akriz");
 
-    const response = await fetch(`https://api.cloudinary.com/v1_1/dug3akriz/image/upload`, {
-      method: "POST",
-      body: formData,
-    });
-    if (!response.ok) {
-        throw new Error("Failed to upload image to Cloudinary");
+    const response = await fetch(
+      `https://api.cloudinary.com/v1_1/dug3akriz/image/upload`,
+      {
+        method: "POST",
+        body: formData,
       }
-  
-      const data = await response.json();
-      return data.secure_url;
-    };
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to upload image to Cloudinary");
+    }
+
+    const data = await response.json();
+    return data.secure_url;
+  };
+
   const formik = useFormik({
     initialValues: {
       fullName: teacher?.fullName || "",
@@ -78,9 +87,23 @@ const TeacherEditPage = () => {
 
         const data = await response.json();
         setTeacher(data);
-        alert("Profile updated successfully!");
+
+        Swal.fire({
+          title: "Success!",
+          text: "Profile updated successfully!",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+
+        navigate(-1);
       } catch (error) {
         console.error("Error updating teacher:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to update profile. Please try again later.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
       } finally {
         setSubmitting(false);
       }
@@ -94,14 +117,14 @@ const TeacherEditPage = () => {
       <Helmet>
           <title>Profile Edit</title>
       </Helmet>
-    <div className="mx-14 mt-10 border-2 border-blue-400 rounded-lg p-8">
+    <div className="mx-14 w-full mt-10 border-2 border-blue-400 rounded-lg p-8">
       <form onSubmit={formik.handleSubmit}>
         <div className="mt-10 text-center font-bold">Contact Us</div>
         <div className="mt-3 text-center text-4xl font-bold">
           Make an Appointment
         </div>
 
-        <div className="flex gap-4 mt-6">
+        <div className="flex gap-4 mt-6 ">
           <input
             type="text"
             name="fullName"
@@ -224,6 +247,12 @@ const TeacherEditPage = () => {
           </button>
         </div>
       </form>
+      <button
+        onClick={() => navigate(-1)}
+        className="mt-4 w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+      >
+        Go back
+      </button>
     </div>
     </>
   );

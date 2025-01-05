@@ -15,7 +15,7 @@ const TeacherProfileCard = ({
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center p-4 ">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <div className="font-std mb-10 w-full rounded-3xl bg-white p-10 font-normal leading-relaxed text-gray-900 shadow-2xl">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/3 text-center mb-8 md:mb-0">

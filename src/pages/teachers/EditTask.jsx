@@ -147,6 +147,13 @@ const EditTask = () => {
           {formik.isSubmitting ? "Updating Task..." : "Update Task"}
         </button>
       </form>
+
+      <button
+        onClick={() => navigate(-1)}
+        className="mt-4 w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+      >
+        Go back
+      </button>
     </div>
     </>
   );

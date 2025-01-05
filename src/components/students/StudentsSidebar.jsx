@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const StudentsSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
   const { t } = useTranslation();
+
+  function handleLogOut() {
+    localStorage.setItem("isAuthenticated", "false");
+    navigate("/login");
+    window.location.reload();
+  }
   
   return (
     <>
@@ -19,7 +26,7 @@ const StudentsSidebar = () => {
             } bg-gray-800 flex flex-col transition-all duration-300 rounded-2xl`}
         >
           <nav
-            className={`flex flex-col flex-1 overflow-y-auto bg-gradient-to-b from-gray-700 to-blue-300 px-2 py-4 gap-10 rounded-2xl`}
+            className={`flex flex-col flex-1 overflow-y-auto bg-gradient-to-b from-gray-400 to-blue-300 px-2 py-4 gap-10 `}
           >
             <div>
               <button
@@ -116,6 +123,12 @@ const StudentsSidebar = () => {
               </Link>
             </div>
           </nav>
+          <button
+          onClick={handleLogOut}
+          className={`px-6 py-3 bg-gradient-to-r from-blue-200 to-purple-300 text-white font-semibold shadow-md hover:from-purple-300 hover:to-blue-200 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-300 text-gray-200 px-4 py-2 ${isCollapsed ? "justify-center" : ""}`}
+        >
+          {t('logout')}
+        </button>
         </div>
         <Outlet />
       </div>

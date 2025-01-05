@@ -21,7 +21,7 @@ const TeacherProfile = () => {
   if (!teacher) return <div>Loading...</div>;
 
   return (
-    <div className="teacher-profile">
+    <div className="teacher-profile mx-auto">
       <TeacherProfileCard fullName={teacher.fullName} img={teacher.profileImage} email={teacher.email} major={teacher.major} bio={teacher.bio} socialLinks={teacher.socialLinks?.linkedin} socialLinks2={teacher.socialLinks?.twitter}/>
     </div>
   );

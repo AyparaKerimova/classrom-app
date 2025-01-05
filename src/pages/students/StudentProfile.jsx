@@ -25,7 +25,7 @@ const StudentProfile = () => {
     <Helmet>
         <title>Student Profile</title>
     </Helmet>
-    <div className="teacher-profile">
+    <div className="teacher-profile w-full">
       <StudentProfileCard 
         profileImage={student.profileImage} 
         fullName={student.fullName} 

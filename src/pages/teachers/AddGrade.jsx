@@ -86,7 +86,7 @@ const AddGrade = () => {
     <Helmet>
         <title>Add Grade</title>
     </Helmet>
-    <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 mt-10">
+    <div style={{maxHeight:500}} className="max-w-md w-full mx-auto bg-white shadow-md rounded-lg p-6 mt-10">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         Add Grade for {student.fullName}
       </h1>

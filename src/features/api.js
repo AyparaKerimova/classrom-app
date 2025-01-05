@@ -101,16 +101,16 @@ export const api = createApi({
         url: `/classes`,
         method: 'GET',
       }),
-      transformResponse: async (classes, _ , arg) => {
+      transformResponse: async (classes, _, studentId) => {
         const studentClasses = classes.filter((classItem) =>
-          classItem.studentIds.includes(arg)
+          classItem.studentIds.map((id) => id.trim()).includes(studentId)
         );
-        const teachersResponse = await fetch('http://localhost:3000/users');
+        const teachersResponse = await fetch(`${BASE_API_URL}/users`);
         const teachers = await teachersResponse.json();
 
         return studentClasses.map((classItem) => {
           const teacher = teachers.find((teacher) => teacher.id === classItem.teacherId);
-          return { ...classItem, teacherName: teacher?.fullName || 'Ad yoxdur' };
+          return { ...classItem, teacherName: teacher?.fullName || 'No name' };
         });
       },
       providesTags: ['Classes'],

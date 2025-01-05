@@ -18,10 +18,12 @@ export default function StudentDashboard() {
     if (storedUser && storedUser.id) {
       setUserId(storedUser.id);
     }
-
-    const storedClasses = JSON.parse(localStorage.getItem('classes'));
-    if (storedClasses) {
-      setClassData(storedClasses);
+  }, []);
+  
+  useEffect(() => {
+    const storedClassData = JSON.parse(localStorage.getItem('classes'));
+    if (storedClassData) {
+      setClassData(storedClassData);
     }
   }, []);
 
@@ -36,37 +38,37 @@ export default function StudentDashboard() {
   });
 
   useEffect(() => {
+    if (classes) {
+      setClassData(classes);
+      localStorage.setItem('classes', JSON.stringify(classes));
+    }
     if (invitationsData) {
       setInvitations(invitationsData);
     }
-  }, [invitationsData]);
+  }, [classes, invitationsData]);
 
-  if (userId === null || userLoading || classesLoading || invitationsLoading) {
+  if (userLoading || classesLoading || invitationsLoading) {
     return <div className="text-center text-xl">Loading...</div>;
   }
 
   if (userError || classesError || invitationsError) {
-    return <div className="text-center text-xl text-red-500">An error occurred while loading: {userError?.message || classesError?.message || invitationsError?.message}</div>;
+    return <div className="text-center text-xl text-red-500">An error occurred while loading data.</div>;
   }
 
   const userName = user?.username || 'No name';
 
-  const classList = classData?.length > 0 ? (
+  const classList = classData.length > 0 ? (
     classData.map((classItem) => (
       <li key={classItem.id} className="py-2">
         <strong className="text-lg">Class: {classItem.name}</strong> - Teacher: {classItem.teacherName || 'No name'}
       </li>
     ))
   ) : (
-    <li className="py-2">No classes found for this student.</li>
+    <li className="py-2">No classes found for this student</li>
   );
 
-  const handleInvitationsClick = () => {
-    setSelectedInvitation({
-      classId: 'c1',
-      status: 'accepted',
-      expiresAt: '2024-01-16T03:59:59Z',
-    });
+  const handleInvitationsClick = (invitation) => {
+    setSelectedInvitation(invitation);
     setIsModalOpen(true);
   };
 
@@ -84,11 +86,11 @@ export default function StudentDashboard() {
             {classList}
           </ul>
         </div>
-        
+
         <div className="relative inline-flex group mb-6">
           <div className="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg filter group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200"></div>
           <button
-            onClick={handleInvitationsClick}
+            onClick={() => handleInvitationsClick(invitations[0])}
             className="relative inline-flex items-center justify-center px-5 py-2 text-base font-bold text-white transition-all duration-200 bg-gray-900 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-gray-600 rounded"
           >
             Invitations

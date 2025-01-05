@@ -199,9 +199,6 @@ const StudentTaskDetails = () => {
           <span className="font-medium">Topic:</span> {task.topic || "No topic"}
         </p>
         <p className="text-gray-700 mb-2">
-          <span className="font-medium">Status:</span> {task.status || "No status"}
-        </p>
-        <p className="text-gray-700 mb-2">
           <span className="font-medium">Deadline:</span>{" "}
           {task.deadline ? new Date(task.deadline).toLocaleString() : "No deadline"}
         </p>

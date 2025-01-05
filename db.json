@@ -134,7 +134,8 @@
         "41c3",
         "u2",
         "41c3",
-        "39b6"
+        "39b6",
+        "7d33 "
       ],
       "schedule": [
         {
@@ -164,7 +165,7 @@
     },
     {
       "id": "t2",
-      "classId": "c2",
+      "classId": "c1",
       "title": "test",
       "description": "Lorem impus",
       "topic": "test",
@@ -173,7 +174,8 @@
       "teacherId": "u1",
       "assignments": [
         "a2",
-        "39b6"
+        "39b6",
+        "u2"
       ],
       "completionRate": 60
     }
@@ -214,6 +216,15 @@
       "assignDate": "2025-01-05T06:00:19.950Z",
       "status": "unsubmitted",
       "feedback": ""
+    },
+    {
+      "id": "fc70",
+      "taskId": "t2",
+      "studentId": "u2",
+      "url": "testtesttesttest",
+      "assignDate": "2025-01-05T09:58:10.804Z",
+      "status": "submit",
+      "feedback": ""
     }
   ],
   "invitations": [
@@ -221,6 +232,13 @@
       "id": "i1",
       "classId": "c1",
       "studentId": "u2",
+      "status": "accepted",
+      "expiresAt": "2024-01-15T23:59:59Z"
+    },
+    {
+      "id": "i1",
+      "classId": "c1",
+      "studentId": "7d33",
       "status": "accepted",
       "expiresAt": "2024-01-15T23:59:59Z"
     }
@@ -240,7 +258,6 @@
       "description": "Comprehensive guide to solving linear equations.",
       "likes": [
         "39b6",
-        "u2",
         "39b6",
         "39b6"
       ],

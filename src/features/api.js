@@ -115,6 +115,13 @@ export const api = createApi({
       },
       providesTags: ['Classes'],
     }),
+    getInvitationsByStudentId: builder.query({
+      query: (studentId) => ({
+        url: `/invitations?studentId=${studentId}`,
+        method: 'GET',
+      }),
+      providesTags: ['Invitations'],
+    }),
     
   }),
 });
@@ -132,5 +139,6 @@ export const {
   useGetMaterialsQuery,
   useAddCommentMutation,
   useAddLikesMutation,
-  useGetClassesByStudentIdQuery
+  useGetClassesByStudentIdQuery,
+  useGetInvitationsByStudentIdQuery 
 } = api;

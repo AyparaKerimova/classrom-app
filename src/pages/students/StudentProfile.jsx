@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StudentProfileCard from '../../components/students/StudentProfileCard';
+import { Helmet } from 'react-helmet-async';
 
 const StudentProfile = () => {
   const [student, setStudent] = useState({});
@@ -8,7 +9,7 @@ const StudentProfile = () => {
   
   useEffect(() => {
     if (studentId) {
-      fetch(`http://localhost:3000/users/${studentId}`)
+      fetch(`https://fish-distinct-divan.glitch.me/users/${studentId}`)
         .then(response => response.json())
         .then(data => setStudent(data));
       console.log(studentId);
@@ -20,6 +21,10 @@ const StudentProfile = () => {
   if (!student) return <div>Loading...</div>;
 
   return (
+    <>
+    <Helmet>
+        <title>Student Profile</title>
+    </Helmet>
     <div className="teacher-profile">
       <StudentProfileCard 
         profileImage={student.profileImage} 
@@ -29,6 +34,7 @@ const StudentProfile = () => {
         overallGrade={student.overallGrade}
       />
     </div>
+    </>
   );
 };
 

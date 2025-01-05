@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import { Editor } from "@tinymce/tinymce-react";
 import { addTaskSchema } from "../../validations/task.add.validation.js";
+import { Helmet } from "react-helmet-async";
 
 const AddTask = () => {
   const { teacherId, classId } = useParams();
@@ -32,7 +33,7 @@ const AddTask = () => {
       };
 
       try {
-        const response = await fetch(`http://localhost:3000/tasks`, {
+        const response = await fetch(`https://fish-distinct-divan.glitch.me/tasks`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -56,6 +57,10 @@ const AddTask = () => {
   };
 
   return (
+    <>
+      <Helmet>
+          <title>Add Task</title>
+      </Helmet>
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
       <h2 className="text-center text-3xl font-bold text-gray-800">Add New Task</h2>
 
@@ -145,6 +150,7 @@ const AddTask = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

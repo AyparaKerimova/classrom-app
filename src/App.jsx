@@ -3,6 +3,7 @@ import TeacherRoute from "./routes/TeacherRoute";
 import StudentRoute from "./routes/StudentRoute";
 import Login from "./pages/common/Login";
 import Register from "./pages/common/Register";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   const isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated") || "false");
@@ -17,6 +18,7 @@ function App() {
   };
 
   return (
+    <HelmetProvider>
     <Routes>
       <Route
         path="/"
@@ -69,6 +71,7 @@ function App() {
         }
       />
     </Routes>
+    </HelmetProvider>
   );
 }
 

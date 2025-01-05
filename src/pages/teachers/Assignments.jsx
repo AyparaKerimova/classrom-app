@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const Assignments = () => {
@@ -9,10 +10,10 @@ const Assignments = () => {
   useEffect(() => {
     if (!teacherId) return;
 
-    fetch("http://localhost:3000/assignments")
+    fetch("https://fish-distinct-divan.glitch.me/assignments")
       .then((response) => response.json())
       .then((data) => {
-        fetch("http://localhost:3000/users")
+        fetch("https://fish-distinct-divan.glitch.me/users")
           .then((response) => response.json())
           .then((usersData) => {
             setUsers(usersData);
@@ -41,6 +42,10 @@ const Assignments = () => {
   };
 
   return (
+    <>
+    <Helmet>
+          <title>Assignments</title>
+      </Helmet>
     <div className="bg-gray-100 min-h-screen py-8">
       <ul className="overflow-hidden rounded-md w-full">
         {assignments.map((assignment) => (
@@ -86,6 +91,7 @@ const Assignments = () => {
         ))}
       </ul>
     </div>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import moment from "moment";
 import { studentGradeSchema } from "../../validations/student.assignment.validation.js";
+import { Helmet } from "react-helmet-async";
 
 const AddGrade = () => {
   const { id } = useParams();
@@ -11,11 +12,11 @@ const AddGrade = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/assignments/${id}`)
+    fetch(`https://fish-distinct-divan.glitch.me/assignments/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setAssignment(data);
-        return fetch(`http://localhost:3000/users/${data.studentId}`);
+        return fetch(`https://fish-distinct-divan.glitch.me/users/${data.studentId}`);
       })
       .then((response) => response.json())
       .then((studentData) => setStudent(studentData))
@@ -54,7 +55,7 @@ const AddGrade = () => {
 
       const updatedStudent = { ...student, grades: updatedGrades, overallGrade: updatedOverallGrade };
 
-      fetch(`http://localhost:3000/users/${student.id}`, {
+      fetch(`https://fish-distinct-divan.glitch.me/users/${student.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedStudent),
@@ -62,7 +63,7 @@ const AddGrade = () => {
         .then(() => {
           const updatedAssignment = { ...assignment, feedback: values.feedback };
 
-          return fetch(`http://localhost:3000/assignments/${assignment.id}`, {
+          return fetch(`https://fish-distinct-divan.glitch.me/assignments/${assignment.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedAssignment),
@@ -81,6 +82,10 @@ const AddGrade = () => {
   }
 
   return (
+    <>
+    <Helmet>
+        <title>Add Grade</title>
+    </Helmet>
     <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 mt-10">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         Add Grade for {student.fullName}
@@ -131,6 +136,7 @@ const AddGrade = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

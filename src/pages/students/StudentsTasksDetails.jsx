@@ -9,6 +9,7 @@ import {
   useUpdateAssignmentMutation,
   useUpdateTaskAssignmentsMutation,
 } from "../../features/api";
+import { Helmet } from "react-helmet-async";
 
 const StudentTaskDetails = () => {
   const { id } = useParams();
@@ -179,6 +180,10 @@ const StudentTaskDetails = () => {
   }
 
   return (
+    <>
+      <Helmet>
+            <title>Student Task Details</title>
+      </Helmet>
     <div className="flex w-full flex-col bg-gray-50 min-h-screen p-6">
       <div className="bg-gradient-to-b from-gray-700 to-blue-300 text-white px-6 py-3 rounded-lg shadow mb-6 flex justify-between items-center">
         <h1 className="text-lg font-bold">Task Details</h1>
@@ -260,6 +265,7 @@ const StudentTaskDetails = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

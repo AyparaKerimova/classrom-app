@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { Editor } from "@tinymce/tinymce-react";
 import { editTaskSchema } from "../../validations/task.edit.validation.js";
+import { Helmet } from "react-helmet-async";
 
 const EditTask = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const EditTask = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const resp = await fetch(`http://localhost:3000/tasks/${id}`);
+        const resp = await fetch(`https://fish-distinct-divan.glitch.me/tasks/${id}`);
         if (!resp.ok) throw new Error("Failed to fetch task");
         const result = await resp.json();
         setTask(result);
@@ -34,7 +35,7 @@ const EditTask = () => {
     validationSchema: editTaskSchema,
     onSubmit: async (values) => {
       try {
-        const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+        const response = await fetch(`https://fish-distinct-divan.glitch.me/tasks/${id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -56,6 +57,10 @@ const EditTask = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Edit Task</title>
+      </Helmet>
     <div className="max-w-4xl mx-auto w-full p-6 bg-white shadow-md rounded-lg">
       <h2 className="text-center text-3xl font-bold text-gray-800">Edit Task</h2>
 
@@ -143,6 +148,7 @@ const EditTask = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

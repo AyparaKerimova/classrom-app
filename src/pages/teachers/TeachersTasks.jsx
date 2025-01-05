@@ -14,7 +14,7 @@ const TeachersTasks = () => {
     const classId = user?.classes ? user.classes[0]?.id : c1;
 
     if (classId) {
-      fetch(`http://localhost:3000/tasks`)
+      fetch(`https://fish-distinct-divan.glitch.me/tasks`)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -44,7 +44,7 @@ const TeachersTasks = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/tasks/${id}`, {
+        fetch(`https://fish-distinct-divan.glitch.me/tasks/${id}`, {
           method: "DELETE",
         })
           .then((response) => {
@@ -78,7 +78,7 @@ const TeachersTasks = () => {
           Add new task
         </Link>
       </div>
-      <div className="h-full flex flex-col w-full items-center dark:bg-gray-800 p-2">
+      <div className="h-full flex flex-col w-full items-center p-2">
         <div className="grid gap-8 p-4 md:p-2 xl:p-5">
           {tasks.map((task) => {
             const cleanDescription = DOMPurify.sanitize(task.description);

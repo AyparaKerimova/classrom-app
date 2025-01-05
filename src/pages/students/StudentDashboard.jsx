@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Helmet } from 'react-helmet-async';
 
 export default function StudentDashboard() {
   const [userId, setUserId] = useState(null);
@@ -79,6 +80,9 @@ export default function StudentDashboard() {
 
   return (
     <>
+    <Helmet>
+          <title>Student Dashboard</title>
+      </Helmet>
       <div className="container mx-auto p-4">
         <div className="header mb-6">
           <h1 className="text-3xl font-semibold mb-2 text-center">Student's Name: {userName}</h1>

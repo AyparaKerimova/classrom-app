@@ -16,7 +16,7 @@ const Login = () => {
     onSubmit: async (values) => {
       const { email, password, isTeacher } = values;
       try {
-        const response = await fetch('http://localhost:3000/users');
+        const response = await fetch('https://fish-distinct-divan.glitch.me/users');
         const users = await response.json();
 
         const user = users.find(
@@ -35,7 +35,7 @@ const Login = () => {
           }
 
           if (user.role === 'teacher') {
-            const classResponse = await fetch('http://localhost:3000/classes');
+            const classResponse = await fetch('https://fish-distinct-divan.glitch.me/classes');
             const classes = await classResponse.json();
             const userClasses = classes.filter(
               (classItem) => classItem.teacherId === user.id

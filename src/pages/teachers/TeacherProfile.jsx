@@ -8,7 +8,7 @@ const TeacherProfile = () => {
   
   useEffect(() => {
     if (teacherId) {
-      fetch(`http://localhost:3000/users/${teacherId}`)
+      fetch(`https://fish-distinct-divan.glitch.me/users/${teacherId}`)
         .then(response => response.json())
         .then(data => setTeacher(data));
         console.log(teacherId);

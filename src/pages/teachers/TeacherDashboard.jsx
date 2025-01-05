@@ -8,10 +8,14 @@ import img1 from "../../assets/media/sumgayit.jpeg"
 import img2 from "../../assets/media/debuglegends.jpeg"
 import img3 from "../../assets/media/dynamicdeployers.JPG"
 import img4 from "../../assets/media/christmas.jpeg"
+import { Helmet } from 'react-helmet-async';
 
 const TeacherDashboard = () => {
   return (
     <>
+      <Helmet>
+          <title>Dashboard</title>
+      </Helmet>
       <Swiper
         slidesPerView={1}
         spaceBetween={30}

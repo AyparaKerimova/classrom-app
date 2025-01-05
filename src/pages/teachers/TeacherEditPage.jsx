@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { userEditSchema } from "../../validations/user.edit.validation";
+import { Helmet } from 'react-helmet-async';
 
 const TeacherEditPage = () => {
   const [teacher, setTeacher] = useState(null);
@@ -8,7 +9,7 @@ const TeacherEditPage = () => {
 
   useEffect(() => {
     if (teacherId) {
-      fetch(`http://localhost:3000/users/${teacherId}`)
+      fetch(`https://fish-distinct-divan.glitch.me/users/${teacherId}`)
         .then((response) => response.json())
         .then((data) => setTeacher(data))
         .catch((error) => console.error("Error fetching teacher:", error));
@@ -61,7 +62,7 @@ const TeacherEditPage = () => {
         };
 
         const response = await fetch(
-          `http://localhost:3000/users/${teacherId}`,
+          `https://fish-distinct-divan.glitch.me/users/${teacherId}`,
           {
             method: "PATCH",
             headers: {
@@ -89,6 +90,10 @@ const TeacherEditPage = () => {
   if (!teacher) return <div>Loading...</div>;
 
   return (
+    <>
+      <Helmet>
+          <title>Profile Edit</title>
+      </Helmet>
     <div className="mx-14 mt-10 border-2 border-blue-400 rounded-lg p-8">
       <form onSubmit={formik.handleSubmit}>
         <div className="mt-10 text-center font-bold">Contact Us</div>
@@ -220,6 +225,7 @@ const TeacherEditPage = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

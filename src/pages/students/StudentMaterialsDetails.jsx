@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useGetMaterialsQuery, useAddCommentMutation } from '../../features/api';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { Helmet } from 'react-helmet-async';
 
 const StudentMaterialDetails = () => {
   const { id } = useParams();
@@ -79,6 +80,10 @@ const StudentMaterialDetails = () => {
   const comments = Array.isArray(materials.comments) ? materials.comments : [];
 
   return (
+    <>
+    <Helmet>
+        <title>Student Materials Details</title>
+    </Helmet>
     <div className="min-h-screen w-full bg-gray-100 py-10">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8">
         <h1 className="text-3xl font-bold text-gray-800 border-b pb-4">{materials.title}</h1>
@@ -159,6 +164,7 @@ const StudentMaterialDetails = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -10,10 +10,10 @@ import AddTask from '../pages/teachers/AddTask';
 import EditTask from '../pages/teachers/EditTask';
 import TeacherMeet from '../pages/teachers/TeacherMeet';
 import TeacherMaterials from '../pages/teachers/TeacherMaterials';
-import AddMaterials from '../pages/teachers/AddMaterials';
 import Assignments from '../pages/teachers/Assignments';
 import AddGrade from '../pages/teachers/AddGrade';
 import Memories from '../pages/teachers/Memories';
+import TeacherMaterialsDetails from '../pages/teachers/TeacherMaterialsDetails';
 
 const TeacherRoute = () => {
   return (
@@ -27,11 +27,11 @@ const TeacherRoute = () => {
         <Route path="add-task/:teacherId/:classId" element={<AddTask/>}/>
         <Route path="edit-task/:id" element={<EditTask/>}/>
         <Route path="teachers-meet" element={<TeacherMeet/>}/>
-        <Route path="teachers-materials/:teacherId/:classId" element={<TeacherMaterials/>} />
-        <Route path="add-material/:teacherId/:classId" element={<AddMaterials/>}/>
+        <Route path="teachers-materials" element={<TeacherMaterials/>} />
         <Route path="assignments/:taskId/:studentId" element={<Assignments/>}/>
         <Route path="add-grade/:id" element={<AddGrade/>}/>
         <Route path="memories" element={<Memories/>}/>
+        <Route path="teachers-materials/:id" element={<TeacherMaterialsDetails/>}/>
       </Route>
     </Routes>
   );

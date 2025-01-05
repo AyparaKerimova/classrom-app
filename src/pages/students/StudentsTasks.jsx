@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useGetTasksQuery } from '../../features/api';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const StudentsTasks = () => {
   const { data: tasks = [], isLoading, isError } = useGetTasksQuery();
@@ -40,6 +41,10 @@ const StudentsTasks = () => {
   }
 
   return (
+    <>
+      <Helmet>
+          <title>Student Tasks</title>
+      </Helmet>
     <div className="p-4 w-full bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold mb-4">Tasks</h1>
       <div className="bg-white shadow-md rounded-lg divide-y divide-gray-200">
@@ -123,6 +128,7 @@ const StudentsTasks = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useGetMaterialsQuery, useAddLikesMutation } from '../../features/api';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const StudentMaterials = () => {
   const { data, error, isLoading } = useGetMaterialsQuery();
@@ -45,6 +46,10 @@ const StudentMaterials = () => {
   }
 
   return (
+    <>
+    <Helmet>
+        <title>Student Materials</title>
+    </Helmet>
     <div className="relative w-full flex flex-wrap min-h-screen bg-gray-50 py-6 sm:py-12">
       {data && data.map((material) => (
         <div key={material.id} style={{ maxHeight: '400px' }} className="group relative  cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-4 sm:max-w-sm sm:rounded-lg sm:px-10 ">
@@ -88,6 +93,7 @@ const StudentMaterials = () => {
         </div>
       ))}
     </div>
+    </>
   );
 };
 

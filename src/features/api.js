@@ -96,6 +96,26 @@ export const api = createApi({
       }),
       invalidatesTags: ['Materials'],
     }),
+    getClassesByStudentId: builder.query({
+      query: (studentId) => ({
+        url: `/classes`,
+        method: 'GET',
+      }),
+      transformResponse: async (classes, _ , arg) => {
+        const studentClasses = classes.filter((classItem) =>
+          classItem.studentIds.includes(arg)
+        );
+        const teachersResponse = await fetch('http://localhost:3000/users');
+        const teachers = await teachersResponse.json();
+
+        return studentClasses.map((classItem) => {
+          const teacher = teachers.find((teacher) => teacher.id === classItem.teacherId);
+          return { ...classItem, teacherName: teacher?.fullName || 'Ad yoxdur' };
+        });
+      },
+      providesTags: ['Classes'],
+    }),
+    
   }),
 });
 
@@ -112,4 +132,5 @@ export const {
   useGetMaterialsQuery,
   useAddCommentMutation,
   useAddLikesMutation,
+  useGetClassesByStudentIdQuery
 } = api;

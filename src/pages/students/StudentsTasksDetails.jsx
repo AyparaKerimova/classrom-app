@@ -140,8 +140,12 @@ const StudentTaskDetails = () => {
     });
   };
 
-
-
+  const isDeadlineOver = () => {
+    if (!task?.deadline) return false;
+    const deadline = new Date(task.deadline);
+    const now = new Date();
+    return now > deadline;
+  };
 
   const isSubmitDisabled = () => {
     const assignment = assignments?.find((a) => a.taskId === task?.id && a.studentId === studentId);
@@ -201,17 +205,23 @@ const StudentTaskDetails = () => {
           <span className="font-medium">Deadline:</span>{" "}
           {task.deadline ? new Date(task.deadline).toLocaleString() : "No deadline"}
         </p>
+        {isDeadlineOver() && (
+          <p className="text-red-600 font-bold mt-2">
+            Deadline is over! You cannot submit this task anymore.
+          </p>
+        )}
         <p className="text-gray-700">
           <span className="font-medium">Assigned Teacher:</span> {teacher ? teacher.fullName : "No teacher assigned"}
         </p>
         <button
           onClick={handleUpdateStatus}
-          className="bg-green-400 text-white px-4 py-2 rounded hover:bg-green-500 mt-4"
+          disabled={isDeadlineOver()}
+          className={`bg-green-400 text-white px-4 py-2 rounded ${isDeadlineOver() ? "opacity-50 cursor-not-allowed" : "hover:bg-green-500"
+            } mt-4`}
         >
           {getButtonLabel()}
         </button>
       </div>
-
       <div className="bg-white shadow rounded-lg p-6 mb-6">
         <h3 className="text-lg font-semibold mb-4">Assignments</h3>
         {showAssignmentsForm ? (
